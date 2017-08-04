@@ -5,7 +5,7 @@ var router = express.Router();
 var db = require("../models");
 
 router.get("/", function(req, res){
-    db.User.findAll({}).then(function(data){
+    db.User.findAll({include: [db.Roast] }).then(function(data){
         var hbsObject = {users:data};
         res.render("index", hbsObject);
     });
@@ -13,10 +13,12 @@ router.get("/", function(req, res){
 
 router.get("/:id", function(req, res){
     db.User.findOne({
-        where:{
-            id: req.params.id
-        }
-    }).then(function(data){
+      where: {
+        id: req.params.id
+      },
+      include: [db.Roast]
+    }
+    ).then(function(data){
         var hbsObject = {users:data};
         res.render("index", hbsObject);
     });

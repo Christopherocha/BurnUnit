@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
  // This model needs a title, a body, and a category
  // Don't forget to 'return' the post after defining
 
- return sequelize.define("User", {
+    var User = sequelize.define("User", {
     name:{
          type: DataTypes.STRING,
          allowNull: false,
@@ -24,7 +24,17 @@ module.exports = function(sequelize, DataTypes) {
          validate:{
              len:[1]
          }
-    },
+    }
 
  });
+
+   User.associate = function(models) {
+    // associate user with roasts they won
+    User.hasMany(models.Roast, {
+      onDelete: "cascade"
+    });
+  };
+
+  return User;
+
 };

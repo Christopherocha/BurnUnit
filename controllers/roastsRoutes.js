@@ -11,6 +11,33 @@ router.get("/", function(req, res){
     });
 });
 
+router.get("/", function(req, res){
+    var query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.Roast.findAll({
+      where: {query},
+      include : [db.User]
+    }).then(function(data){
+        var hbsObject = {roasts:data};
+        res.render("index", hbsObject);
+    });
+});
+
+router.get("/", function(req, res){
+    db.Roast.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(function(data){
+        var hbsObject = {roasts:data};
+        res.render("index", hbsObject);
+    });
+});
+
+
 router.post("/", function(req, res){
     if(!req.body.roast || !req.body.participants){
         console.log("needs more info to create roast");

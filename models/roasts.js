@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
  // This model needs a title, a body, and a category
  // Don't forget to 'return' the post after defining
 
- return sequelize.define("Roast", {
+var Roast = sequelize.define("Roast", {
     roast:{
          type: DataTypes.STRING,
          allowNull: false,
@@ -24,7 +24,20 @@ module.exports = function(sequelize, DataTypes) {
          validate:{
              len:[1]
          }
-    },
+    }
 
  });
+
+   Roast.associate = function(models) {
+    // Using additional options like CASCADE etc for demonstration
+    // Can also simply do Task.belongsTo(models.User);
+    Roast.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }  
+
+  return Roast;
 };
