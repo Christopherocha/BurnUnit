@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Christopherocha/BurnUnit#readme",
   "dependencies": {
+    "firebase": "^4.2.0",
     "method-override": "^2.3.9",
     "mysql2": "^1.4.0",
     "sequelize": "^4.4.2"
