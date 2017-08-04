@@ -1,0 +1,19 @@
+{
+  "name": "burnunit",
+  "version": "1.0.0",
+  "description": "full stack application where users roast each other",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christopherocha/BurnUnit.git"
+  },
+  "author": "Chris Rocha, Jordan Knight, Lindsey Fischer, John Bendfeldt, Kaylea Box",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Christopherocha/BurnUnit/issues"
+  },
+  "homepage": "https://github.com/Christopherocha/BurnUnit#readme"
+}
