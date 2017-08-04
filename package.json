@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Christopherocha/BurnUnit/issues"
   },
-  "homepage": "https://github.com/Christopherocha/BurnUnit#readme"
+  "homepage": "https://github.com/Christopherocha/BurnUnit#readme",
+  "dependencies": {
+    "method-override": "^2.3.9",
+    "mysql2": "^1.4.0",
+    "sequelize": "^4.4.2"
+  }
 }
