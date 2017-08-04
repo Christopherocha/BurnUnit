@@ -15,9 +15,12 @@ app.use(override("_method"));
 app.engine("handlebars", hb({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
+
+var routes = require("./controllers/routes.js");
 var usersRoutes = require("./controllers/usersRoutes.js");
 var roastRoutes = require("./controllers/roastsRoutes.js");
 
+app.use("/", routes);
 app.use("/users", usersRoutes);
 app.use("/roasts", roastRoutes)
 
