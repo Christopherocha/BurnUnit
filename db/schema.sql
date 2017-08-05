@@ -8,11 +8,11 @@ CREATE TABLE IF NOT EXISTS roasts (
     winner VARCHAR(100) NOT NULL,
     post VARCHAR(200),
     date TIMESTAMP
-)
+);
 
 CREATE TABLE IF NOT EXISTS users (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     date TIMESTAMP
-)
+);

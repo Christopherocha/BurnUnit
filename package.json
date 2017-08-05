@@ -24,5 +24,16 @@
     "method-override": "^2.3.9",
     "mysql2": "^1.4.0",
     "sequelize": "^4.4.2"
+  },
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "chai": "^4.1.1",
+    "karma": "^1.7.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-commonjs": "^1.0.0",
+    "karma-mocha-reporter": "^2.2.3",
+    "mocha": "^3.5.0",
+    "watchify": "^3.9.0"
   }
 }
