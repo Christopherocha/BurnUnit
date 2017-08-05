@@ -56,12 +56,42 @@
         </nav>
         </article>
 
-        <div class="launch">
-            <h1>Welcome to the burnUnit</h1>
-        
-        </div>
+          <form class="create-update-form launch z-depth-5" action="/users" method="POST">
 
-           
+            <div class="launchLabels">
+              <article class="">
+                <label for="name">Name:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="name" name="name">
+              </article>
+            </div>
+
+            <div class="launchLabels">
+              <article class="">
+                <label for="password">Password:</label>
+              </article>
+              <article class="">
+                <input type="password" class="" id="password" name="password">
+              </article>
+            </div> 
+
+            <div class="launchLabels">
+              <article class="">
+                <label for="image">Image:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="image" name="image">
+              </article>
+            </div> 
+
+            <div class="">
+              <button type="submit" class="create z-depth-2" ><span>Create</span></button>
+          
+            
+            </div>
+            
+          </form>
 
           <script type="text/javascript">
             $( document ).ready(function(){
