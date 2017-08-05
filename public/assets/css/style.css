@@ -1,0 +1,72 @@
+body {
+    background: none;
+}
+
+h2 {
+    color: #4A9AFE;
+    font-weight: 900;
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+nav, nav-wrapper {
+    background: #4A9AFE;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+label {
+    color: #26A69A;
+    font-size: 18px;
+}
+
+.logIn {
+    text-align: left;
+    margin: 20px auto;
+    width: 95%;
+    max-width: 800px;
+    background-color: rgba(240, 240, 240, .75);
+    border-radius: 20px;
+    padding: 30px;
+    font-size: 20px;
+    box-shadow: 2px 2px 4px #26A69A;
+}
+
+.create {
+    color: #26A69A;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.create:active {
+    background: white;
+    color: #4A9AFE;
+}
+
+.create span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.create span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.create:hover span {
+  padding-right: 25px;
+}
+
+.create:hover span:after {
+  opacity: 1;
+  right: 0;
+}
