@@ -1,18 +1,23 @@
 
-        <nav>
+        <nav class="z-depth-4">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo">burnUnit</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Login</a></li>
-                <li><a href="badges.html">Sign Up</a></li>
+            <a href="/" class="brand-logo"><span class="glyphicon glyphicon-fire"></span>burnUnit</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="login">Login</a></li>
+              <li><a href="index">Sign Up</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="login">Login</a></li>
+              <li><a href="index">Sign Up</a></li>
             </ul>
             </div>
         </nav>
 
-         <article class="">
-          <p class=""><strong> Users </strong></p>
+        <article class="">
+          <a href="users"><h2 class="">Users</h2></a>
         </article>
-        
+
         <article class="">
           <ul>
             {{#each users}} 
@@ -34,11 +39,11 @@
 
         </article>
 
-          <form class="create-update-form" action="/users" method="POST">
+          <form class="create-update-form logIn z-depth-5" action="/users" method="POST">
 
             <div class="">
               <article class="">
-                <label for="name">name:</label>
+                <label for="name">Name:</label>
               </article>
               <article class="tile is-child is-10">
                 <input type="text" class="" id="name" name="name">
@@ -47,7 +52,7 @@
 
             <div class="">
               <article class="">
-                <label for="password">password:</label>
+                <label for="password">Password:</label>
               </article>
               <article class="">
                 <input type="text" class="" id="password" name="password">
@@ -56,7 +61,7 @@
 
             <div class="">
               <article class="">
-                <label for="image">image:</label>
+                <label for="image">Image:</label>
               </article>
               <article class="">
                 <input type="text" class="" id="image" name="image">
