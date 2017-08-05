@@ -7,7 +7,7 @@ var db = require("../models");
 router.get("/", function(req, res){
     db.User.findAll({include: [db.Roast] }).then(function(data){
         var hbsObject = {users:data};
-        res.render("user", hbsObject);
+        res.render("userroute", hbsObject);
     });
 });
 
@@ -22,7 +22,7 @@ router.get("/:id", function(req, res){
         var hbsObject = {users:data};
         res.render("home", {hbsObject,
             whichPartial: function() {
-            return "user";
+            return "userroute";
             }
         });
     });

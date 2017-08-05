@@ -8,7 +8,7 @@ router.get("/", function(req, res){
     db.Roast.findAll({}).then(function(data){
         var hbsObject = {roasts:data};
         console.log(hbsObject);
-        res.render("roast", hbsObject);
+        res.render("roastroute", hbsObject);
     });
 });
 
@@ -22,7 +22,7 @@ router.get("/", function(req, res){
       include : [db.User]
     }).then(function(data){
         var hbsObject = {roasts:data};
-        res.render("roast", hbsObject);
+        res.render("roastroute", hbsObject);
     });
 });
 
@@ -34,7 +34,7 @@ router.get("/", function(req, res){
       include: [db.User]
     }).then(function(data){
         var hbsObject = {roasts:data};
-        res.render("roast", hbsObject);
+        res.render("roastroute", hbsObject);
     });
 });
 
@@ -45,7 +45,8 @@ router.post("/:id", function(req, res){
         res.redirect("/roasts")
     }
     else{
-        db.Roast.create({user_id:req.params.id,
+        db.Roast.create({
+            UserId:req.params.id,
             roast:req.body.roast,
             participants:req.body.participants
         }).then( function(dbRoast)
