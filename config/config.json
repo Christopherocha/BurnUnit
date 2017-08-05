@@ -1,21 +1,25 @@
 {
   "development": {
     "username": "root",
-    "password": "cabbage",
+<<<<<<< HEAD
+    "password": "Mj52camu",
+=======
+    "password": "",
+>>>>>>> a494662d9b575a8df22c38407d17329a55871482
     "database": "burn_unit",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "Mj52camu",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "Mj52camu",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"

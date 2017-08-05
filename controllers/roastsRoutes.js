@@ -39,14 +39,16 @@ router.get("/", function(req, res){
 });
 
 
-router.post("/", function(req, res){
+router.post("/:id", function(req, res){
     if(!req.body.roast || !req.body.participants){
         console.log("needs more info to create roast");
         res.redirect("/roasts")
     }
     else{
-        console.log(req.body);
-        db.Roast.create(req.body).then( function(dbRoast)
+        db.Roast.create({user_id:req.params.id,
+            roast:req.body.roast,
+            participants:req.body.participants
+        }).then( function(dbRoast)
         {
             res.redirect("/roasts");
         });
@@ -61,6 +63,17 @@ router.put("/:id", function(req, res){
         winner: req.body.winner,
         post: req.body.post, 
         participants: req.body.participants},
+        {
+            where: {id: req.params.id}
+      }).then(function(dbRoast) {
+        res.redirect("/roasts");
+      });
+});
+
+router.put("/winner/:id", function(req, res){
+    db.Roast.update({
+        winner: req.body.winner,
+        post: req.body.post},
         {
             where: {id: req.params.id}
       }).then(function(dbRoast) {
