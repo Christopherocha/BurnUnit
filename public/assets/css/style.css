@@ -3,14 +3,14 @@ body {
 }
 
 h2 {
-    color: #4A9AFE;
+    color: #ff9800;
     font-weight: 900;
     font-size: 24px;
     padding-top: 20px;
 }
 
 nav, nav-wrapper {
-    background: #4A9AFE;
+    background: #ff9800;
 }
 
 a:hover {
