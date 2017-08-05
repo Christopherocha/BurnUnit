@@ -1,0 +1,71 @@
+<article class="">
+          <p class=""><strong> Roasts </strong></p>
+        </article>
+        
+        <article class="">
+          <ul>
+            {{#each roasts}} 
+            <li>
+
+              <article class="tile is-child is-12 notification is-patty shadow">
+                <p>{{this.roast}} - {{this.winner}}</p>
+              </article>
+              
+              <form action="/roasts/{{this.id}}?_method=PUT" method="POST">
+                <input type="text">
+                <button type="submit" class=" ">update</button>
+              </form>
+
+
+            </li>
+            {{/each}}
+          </ul>
+
+        </article>
+
+          <form class="create-update-form" action="/roasts" method="POST">
+
+            <!--<div class="">
+              <article class="">
+                <label for="roast">roast:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="roast" name="roast">
+              </article>
+            </div>-->
+
+            <div class="">
+              <article class="">
+                <label for="user">user:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="user" name="user">
+              </article>
+            </div> 
+            
+
+            <div class="">
+              <article class="">
+                <label for="post">post:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="post" name="post">
+              </article>
+            </div> 
+
+            <!--<div class="">
+              <article class="">
+                <label for="participants">participants:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="participants" name="participants">
+              </article>
+            </div>-->         
+
+            <div class="">
+              <button type="submit" class="" >create</button>
+          
+            
+            </div>
+            
+          </form>

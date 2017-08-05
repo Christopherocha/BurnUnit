@@ -7,7 +7,7 @@ var db = require("../models");
 router.get("/", function(req, res){
     db.User.findAll({include: [db.Roast] }).then(function(data){
         var hbsObject = {users:data};
-        res.render("index", hbsObject);
+        res.render("user", hbsObject);
     });
 });
 
@@ -20,14 +20,18 @@ router.get("/:id", function(req, res){
     }
     ).then(function(data){
         var hbsObject = {users:data};
-        res.render("index", hbsObject);
+        res.render("home", {hbsObject,
+            whichPartial: function() {
+            return "user";
+            }
+        });
     });
 });
 
 router.post("/", function(req, res){
     if(!req.body.name || !req.body.password || !req.body.image){
         console.log("order was not properly completed");
-        res.redirect("/")
+        res.redirect("/users")
     }
     else{
         db.User.create({
@@ -36,7 +40,7 @@ router.post("/", function(req, res){
             "image": req.body.image
         }).then( function(dbUser)
         {
-            res.redirect("/");
+            res.redirect("/users");
         });
     }
 });
@@ -48,7 +52,7 @@ router.put("/:id", function(req, res){
         {
             where: {id: req.params.id}
       }).then(function(dbUser) {
-        res.redirect("/");
+        res.redirect("/users");
       });
 });
 
@@ -58,7 +62,7 @@ router.delete("/:id", function(req, res){
         id: req.params.id
       }
     }).then(function(dbUser) {
-      res.redirect("/");
+      res.redirect("/users");
     });
 });
 

@@ -4,27 +4,34 @@ module.exports = function(sequelize, DataTypes) {
  // Don't forget to 'return' the post after defining
 
 var Roast = sequelize.define("Roast", {
-    roast:{
-         type: DataTypes.STRING,
-         allowNull: false,
-         validate:{
-             len:[1]
-         }
-     },
-    winner:{
-         type: DataTypes.STRING,
-         allowNull: false,
-         validate:{
-             len:[1]
-         }
-    },
+    // roast:{
+    //      type: DataTypes.STRING,
+    //      allowNull: false,
+    //      validate:{
+    //          len:[1]
+    //      }
+    //  },
+    // winner:{
+    //      type: DataTypes.STRING,
+    //      allowNull: false,
+    //      validate:{
+    //          len:[1]
+    //      }
+    // },
     post:{
          type: DataTypes.STRING,
          allowNull: false,
          validate:{
              len:[1]
          }
-    }
+    },
+    // participants:{
+    //      type: DataTypes.STRING,
+    //      allowNull: false,
+    //      validate:{
+    //          len:[1]
+    //      }
+    // }
 
  });
 

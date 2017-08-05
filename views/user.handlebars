@@ -1,0 +1,77 @@
+
+        <nav>
+            <div class="nav-wrapper">
+            <a href="#" class="brand-logo">burnUnit</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Login</a></li>
+                <li><a href="badges.html">Sign Up</a></li>
+            </ul>
+            </div>
+        </nav>
+
+         <article class="">
+          <p class=""><strong> Users </strong></p>
+        </article>
+        
+        <article class="">
+          <ul>
+            {{#each users}} 
+            <li>
+
+              <article class="tile is-child is-12 notification is-patty shadow">
+                <p>{{this.name}} - {{this.password}}</p>
+              </article>
+              
+              <form action="/users/{{this.id}}?_method=PUT" method="POST">
+                <input type="text">
+                <button type="submit" class=" ">update</button>
+              </form>
+
+
+            </li>
+            {{/each}}
+          </ul>
+
+        </article>
+
+          <form class="create-update-form" action="/users" method="POST">
+
+            <div class="">
+              <article class="">
+                <label for="name">name:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="name" name="name">
+              </article>
+            </div>
+
+            <div class="">
+              <article class="">
+                <label for="password">password:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="password" name="password">
+              </article>
+            </div> 
+
+            <div class="">
+              <article class="">
+                <label for="image">image:</label>
+              </article>
+              <article class="">
+                <input type="text" class="" id="image" name="image">
+              </article>
+            </div> 
+
+            <div class="">
+              <button type="submit" class="" >create</button>
+          
+            
+            </div>
+            
+          </form>
+
+
+          <script type="text/javascript">
+
+          </script>

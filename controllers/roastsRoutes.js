@@ -8,7 +8,7 @@ router.get("/", function(req, res){
     db.Roast.findAll({}).then(function(data){
         var hbsObject = {roasts:data};
         console.log(hbsObject);
-        res.render("index", hbsObject);
+        res.render("roast", hbsObject);
     });
 });
 
@@ -22,7 +22,7 @@ router.get("/", function(req, res){
       include : [db.User]
     }).then(function(data){
         var hbsObject = {roasts:data};
-        res.render("index", hbsObject);
+        res.render("roast", hbsObject);
     });
 });
 
@@ -34,7 +34,7 @@ router.get("/", function(req, res){
       include: [db.User]
     }).then(function(data){
         var hbsObject = {roasts:data};
-        res.render("index", hbsObject);
+        res.render("roast", hbsObject);
     });
 });
 
@@ -42,15 +42,13 @@ router.get("/", function(req, res){
 router.post("/", function(req, res){
     if(!req.body.roast || !req.body.participants){
         console.log("needs more info to create roast");
-        res.redirect("/")
+        res.redirect("/roasts")
     }
     else{
-        db.Roast.create({
-            "roast": req.body.roast,
-            "participants": req.body.participants
-        }).then( function(dbRoast)
+        console.log(req.body);
+        db.Roast.create(req.body).then( function(dbRoast)
         {
-            res.redirect("/");
+            res.redirect("/roasts");
         });
     }
 });
@@ -61,12 +59,12 @@ router.post("/", function(req, res){
 router.put("/:id", function(req, res){
     db.Roast.update({
         winner: req.body.winner,
-        winning_post: req.body.post, 
+        post: req.body.post, 
         participants: req.body.participants},
         {
             where: {id: req.params.id}
       }).then(function(dbRoast) {
-        res.redirect("/");
+        res.redirect("/roasts");
       });
 });
 
@@ -76,7 +74,7 @@ router.delete("/:id", function(req, res){
         id: req.params.id
       }
     }).then(function(dbRoast) {
-      res.redirect("/");
+      res.redirect("/roasts");
     });
 });
 
