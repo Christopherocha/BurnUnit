@@ -18,19 +18,20 @@
           <h2 class="">Users</h2>
         </article>
         
-        <article class="">
+        <article>
           <ul>
             {{#each users}} 
-            <li>
+            <li class="users">
 
-              <article class="tile is-child is-12 notification is-patty shadow">
-                <p>{{this.name}} - {{this.password}}</p>
-              </article>
+              <article class="">
+                <p>{{this.name}}</p>
+                <img src="{{this.image}}" alt="{{this.name}}" title="{{this.name}}" width="200px" />
               
               <form action="/users/{{this.id}}?_method=PUT" method="POST">
                 <input type="text">
-                <button type="submit" class=" ">update</button>
+                <button type="submit" class="create"><span>Update</span></button>
               </form>
+              </article>
 
 
             </li>
@@ -53,12 +54,6 @@
             <div class="">
               <article class="">
                 <label for="password">Password:</label>
-              </article>
-              <article class="">
-                <input type="password" class="" id="password" name="password">
-              </article>
-              <article class="">
-                <label for="password">Confirm Password:</label>
               </article>
               <article class="">
                 <input type="password" class="" id="password" name="password">
