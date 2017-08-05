@@ -1,0 +1,89 @@
+body {
+    background: #efebe9;
+}
+
+h2 {
+    color: #ff9800;
+    font-weight: 900;
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+nav, nav-wrapper {
+    background: #ff9800;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+label {
+    color: #607d8b;
+    font-size: 18px;
+}
+
+.logIn {
+    text-align: left;
+    margin: 20px auto;
+    width: 95%;
+    max-width: 800px;
+    background-color: rgba(250, 250, 250, .75);
+    border-radius: 20px;
+    padding: 40px;
+    font-size: 20px;
+    border: 2px solid #607d8b;
+}
+
+button:active {
+    background: lightgray !important;
+}
+
+.create {
+    color: #ff9800;
+    border-radius: 5px;
+    transition: all 0.5s;
+    border: 1px solid #ff9800;
+    font-weight: 900;
+}
+
+
+.create span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.create span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.create:hover span {
+    padding-right: 25px;
+}
+
+.create:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.users {
+    width: 95%;
+    max-width: 300px;
+    margin: 5px;
+    background-color: rgba(250, 250, 250, .75) !important;
+    border-radius: 20px !important;
+    border: 2px solid #607d8b;
+    padding: 20px;
+}
+
+p {
+    color: #607d8b;
+    font-weight: 900;
+}
