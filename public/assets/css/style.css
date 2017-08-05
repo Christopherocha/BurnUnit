@@ -1,5 +1,5 @@
 body {
-    background: none;
+    background: #efebe9;
 }
 
 h2 {
@@ -19,7 +19,7 @@ a:hover {
 }
 
 label {
-    color: #26A69A;
+    color: #607d8b;
     font-size: 18px;
 }
 
@@ -32,14 +32,15 @@ label {
     border-radius: 20px;
     padding: 40px;
     font-size: 20px;
-    border: 2px solid #26a69a;
+    border: 2px solid #607d8b;
 }
 
 .create {
-    color: #26a69a;
+    color: #ff9800;
     border-radius: 5px;
     transition: all 0.5s;
-    border: 1px solid #26a69a;
+    border: 1px solid #ff9800;
+    font-weight: 900;
 }
 
 
