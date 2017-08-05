@@ -7,6 +7,7 @@ var db = require("../models");
 router.get("/", function(req, res){
     db.Roast.findAll({}).then(function(data){
         var hbsObject = {roasts:data};
+        console.log(hbsObject);
         res.render("index", hbsObject);
     });
 });
