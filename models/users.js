@@ -31,7 +31,14 @@ module.exports = function(sequelize, DataTypes) {
          validate:{
              len:[1]
          }
-    }
+    },
+    rank:{
+         type: DataTypes.INTEGER,
+         allowNull: true,
+         validate:{
+             min: 1  
+         }
+    }        
 
  });
 
