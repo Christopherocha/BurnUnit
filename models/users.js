@@ -31,7 +31,19 @@ module.exports = function(sequelize, DataTypes) {
    User.associate = function(models) {
     // associate user with roasts they won
     User.hasMany(models.Roast, {
-      onDelete: "cascade"
+      //as:"roasts",  
+      onDelete: "cascade",
+      foreignKey: {
+        allowNull: false
+      }      
+    });
+
+    User.hasMany(models.Quote, {
+        //as:"quotes",
+        onDelete:"CASCADE",
+      foreignKey: {
+        allowNull: false
+      }        
     });
   };
 

@@ -18,11 +18,14 @@ app.set("view engine", "handlebars");
 
 var routes = require("./controllers/routes.js");
 var usersRoutes = require("./controllers/usersRoutes.js");
-var roastRoutes = require("./controllers/roastsRoutes.js");
+var roastsRoutes = require("./controllers/roastsRoutes.js");
+var quotesRoutes = require("./controllers/quotesRoutes.js");
+
 
 app.use("/", routes);
 app.use("/users", usersRoutes);
-app.use("/roasts", roastRoutes)
+app.use("/roasts", roastsRoutes);
+app.use("/quotes", quotesRoutes);
 
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(port, function() {

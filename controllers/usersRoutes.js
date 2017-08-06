@@ -11,6 +11,16 @@ router.get("/", function(req, res){
     });
 });
 
+
+//using this route to create a temporary roastee in the roastrouts.handlebars
+//might not need this in the future
+router.get("/roasts", function(req, res){
+    db.User.findAll({}).then(function(data){
+        var hbsObject = {users:data};
+        res.json(hbsObject);
+    });
+});
+
 router.get("/:id", function(req, res){
     db.User.findOne({
       where: {

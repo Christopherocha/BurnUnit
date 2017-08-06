@@ -38,7 +38,6 @@ router.get("/", function(req, res){
     });
 });
 
-
 router.post("/:id", function(req, res){
     if(!req.body.roast || !req.body.participants){
         console.log("needs more info to create roast");

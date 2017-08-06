@@ -39,11 +39,20 @@ var Roast = sequelize.define("Roast", {
     // Using additional options like CASCADE etc for demonstration
     // Can also simply do Task.belongsTo(models.User);
     Roast.belongsTo(models.User, {
+      //as:"roasts",  
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: false
       }
     });
+
+    Roast.hasMany(models.Quote, {
+        //as:"quotes",
+        onDelete: "CASCADE",
+        foreignKey: {
+        allowNull: false
+      }
+    })
   }  
 
   return Roast;
