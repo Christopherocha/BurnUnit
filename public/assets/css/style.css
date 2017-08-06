@@ -7,10 +7,9 @@ html {
 body {
     background: #efebe9;
     background-image: url("../images/fire.png");
-    /* background-position: 100%; */
-    /* background-size: contain; */
-    background-size: cover;
-    /* height: 100% !important; */
+    background-position: 100%;
+    min-height: 100% !important;
+    margin: auto;
     background-attachment: fixed;
 }
 
@@ -67,7 +66,7 @@ input {
     max-width: 800px;
     background-color: rgba(250, 250, 250, .75);
     border-radius: 20px;
-    padding: 35px 10%;
+    padding: 35px 25px !important;
     font-size: 20px;
     border: 2px solid #607d8b;
 }
