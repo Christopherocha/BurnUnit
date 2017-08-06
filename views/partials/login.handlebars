@@ -13,31 +13,7 @@
             </ul>
             </div>
         </nav>
-
-         <article class="">
-          <h2 class="">Users</h2>
-        </article>
         
-        <article class="">
-          <ul>
-            {{#each users}} 
-            <li>
-
-              <article class="tile is-child is-12 notification is-patty shadow">
-                <p>{{this.name}} - {{this.password}}</p>
-              </article>
-              
-              <form action="/users/{{this.id}}?_method=PUT" method="POST">
-                <input type="text">
-                <button type="submit" class=" ">update</button>
-              </form>
-
-
-            </li>
-            {{/each}}
-          </ul>
-
-        </article>
 
           <form class="create-update-form logIn z-depth-5" action="/users" method="POST">
 

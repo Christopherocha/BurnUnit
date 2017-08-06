@@ -7,8 +7,11 @@ html {
 body {
     background: #efebe9;
     background-image: url("../images/fire.png");
-    background-position: 100%;
-    height: 100% !important;
+    /* background-position: 100%; */
+    /* background-size: contain; */
+    background-size: cover;
+    /* height: 100% !important; */
+    background-attachment: fixed;
 }
 
 h1 {

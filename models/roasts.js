@@ -4,33 +4,33 @@ module.exports = function(sequelize, DataTypes) {
  // Don't forget to 'return' the post after defining
 
 var Roast = sequelize.define("Roast", {
-    roast:{
-         type: DataTypes.STRING,
-         allowNull: false,
-         validate:{
-             len:[1]
-         }
-     },
-    winner:{
-         type: DataTypes.STRING,
+    roastee:{
+         type: DataTypes.INTEGER,
          allowNull: true,
-         validate:{
-             len:[1]
-         }
+        //  validate:{
+        //     min: 1         
+        // }
     },
-    post:{
-         type: DataTypes.STRING,
+    winner:{
+         type: DataTypes.INTEGER,
          allowNull: true,
-         validate:{
-             len:[1]
-         }
+        //  validate:{
+        //      min: 1  
+        //  }
+    },
+    quote:{
+         type: DataTypes.INTEGER,
+         allowNull: true,
+        //  validate:{
+        //      min: 1
+        //  }
     },
     participants:{
          type: DataTypes.STRING,
          allowNull: true,
-         validate:{
-             len:[1]
-         }
+        //  validate:{
+        //      len:[1]
+        //  }
     }
 
  });
@@ -39,11 +39,20 @@ var Roast = sequelize.define("Roast", {
     // Using additional options like CASCADE etc for demonstration
     // Can also simply do Task.belongsTo(models.User);
     Roast.belongsTo(models.User, {
+      //as:"roasts",  
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: false
       }
     });
+
+    Roast.hasMany(models.Quote, {
+        //as:"quotes",
+        onDelete: "CASCADE",
+        foreignKey: {
+        allowNull: false
+      }
+    })
   }  
 
   return Roast;

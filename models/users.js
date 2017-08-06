@@ -8,30 +8,56 @@ module.exports = function(sequelize, DataTypes) {
          type: DataTypes.STRING,
          allowNull: false,
          validate:{
-             len:[1]
+             len:[2]
          }
      },
     password:{
          type: DataTypes.STRING,
          allowNull: false,
          validate:{
-             len:[1]
+             len:[8]
          }
     },
+    username:{
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate:{
+             len:[2]
+         }
+     },        
     image:{
          type: DataTypes.STRING,
          allowNull: false,
          validate:{
              len:[1]
          }
-    }
+    },
+    rank:{
+         type: DataTypes.INTEGER,
+         allowNull: true,
+         validate:{
+             min: 1  
+         }
+    }        
 
  });
 
    User.associate = function(models) {
     // associate user with roasts they won
     User.hasMany(models.Roast, {
-      onDelete: "cascade"
+      //as:"roasts",  
+      onDelete: "cascade",
+      foreignKey: {
+        allowNull: false
+      }      
+    });
+
+    User.hasMany(models.Quote, {
+        //as:"quotes",
+        onDelete:"CASCADE",
+      foreignKey: {
+        allowNull: false
+      }        
     });
   };
 

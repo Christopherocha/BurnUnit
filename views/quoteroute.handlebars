@@ -14,19 +14,19 @@
 </nav>
 
         <article class="">
-          <a href="roasts"><h2 class="">Roasts</h2></a>
+          <a href="quotes"><h2 class="">Quotes</h2></a>
         </article>
         
         <article class="">
           <ul>
-            {{#each roasts}} 
+            {{#each quotes}} 
             <li>
 
               <article class="tile is-child is-12 notification is-patty shadow">
-                <p>roast - {{this.UserId}}</p>
+                <p>{{this.quote}} - {{this.UserId}}</p>
               </article>
               
-              <form action="/roasts/{{this.id}}?_method=PUT" method="POST">
+              <form action="/quotes/{{this.id}}?_method=PUT" method="POST">
                 <input type="text">
                 <button type="submit" class=" ">Update</button>
               </form>
@@ -38,16 +38,35 @@
 
         </article>
 
-          <form id="create-roast" class="create-update-form logIn z-depth-5" action="/roasts" method="POST">
+          <form id="create-quote" class="create-update-form logIn z-depth-5" action="/quotes/" method="POST">
 
             <div class="">
               <article class="">
-                <label for="UserId">UserId:</label>
+                <label for="UserId">user:</label>
               </article>
-              <article class="">
+              <article class="tile is-child is-10">
                 <input type="text" class="" id="UserId" name="UserId">
               </article>
-            </div> 
+            </div>
+
+            <div class="">
+              <article class="">
+                <label for="RoastId">roast:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="RoastId" name="RoastId">
+              </article>
+            </div>
+
+            <div class="">
+              <article class="">
+                <label for="quote">quote:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="quote" name="quote">
+              </article>
+            </div>
+                    
 
             <div class="">
               <button type="submit" class="" >create</button>
@@ -56,4 +75,4 @@
             </div>
             
           </form>
-<script type="text/javascript" src="assets/js/roasts.js"></script>
+<!--<script type="text/javascript" src="assets/js/roasts.js"></script>-->
