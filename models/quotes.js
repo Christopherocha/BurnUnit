@@ -10,7 +10,12 @@ var Quote = sequelize.define("Quote", {
          validate:{
              len:[1]
          }
-    }
+    },
+    win:{
+         type: DataTypes.BOOLEAN,
+         allowNull: false,
+         defaultValue: false
+    }        
 
  });
 

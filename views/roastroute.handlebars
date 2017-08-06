@@ -23,7 +23,7 @@
             <li>
 
               <article class="tile is-child is-12 notification is-patty shadow">
-                <p>{{this.roast}} - {{this.winner}}</p>
+                <p>roast - {{this.UserId}}</p>
               </article>
               
               <form action="/roasts/{{this.id}}?_method=PUT" method="POST">
@@ -42,40 +42,12 @@
 
             <div class="">
               <article class="">
-                <label for="roast">roast:</label>
-              </article>
-              <article class="tile is-child is-10">
-                <input type="text" class="" id="roast" name="roast">
-              </article>
-            </div>
-
-            <div class="">
-              <article class="">
-                <label for="user">User:</label>
+                <label for="UserId">UserId:</label>
               </article>
               <article class="">
-                <input type="text" class="" id="user" name="user">
+                <input type="text" class="" id="UserId" name="UserId">
               </article>
             </div> 
-            
-
-            <div class="">
-              <article class="">
-                <label for="post">Post:</label>
-              </article>
-              <article class="">
-                <input type="text" class="" id="post" name="post">
-              </article>
-            </div> 
-
-            <div class="">
-              <article class="">
-                <label for="participants">participants:</label>
-              </article>
-              <article class="">
-                <input type="text" class="" id="participants" name="participants">
-              </article>
-            </div>         
 
             <div class="">
               <button type="submit" class="" >create</button>

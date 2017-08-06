@@ -4,14 +4,6 @@ var router = express.Router();
 
 var db = require("../models");
 
-router.get("/", function(req, res){
-    db.User.findAll({include: [db.Roast] }).then(function(data){
-        var hbsObject = {users:data};
-        res.render("userroute", hbsObject);
-    });
-});
-
-
 //using this route to create a temporary roastee in the roastrouts.handlebars
 //might not need this in the future
 router.get("/roasts", function(req, res){
@@ -21,6 +13,18 @@ router.get("/roasts", function(req, res){
     });
 });
 
+
+//get users
+
+//get all users
+router.get("/", function(req, res){
+    db.User.findAll({include: [db.Roast] }).then(function(data){
+        var hbsObject = {users:data};
+        res.render("userroute", hbsObject);
+    });
+});
+
+//get users by id
 router.get("/:id", function(req, res){
     db.User.findOne({
       where: {
@@ -30,16 +34,60 @@ router.get("/:id", function(req, res){
     }
     ).then(function(data){
         var hbsObject = {users:data};
-        res.render("home", {hbsObject,
-            whichPartial: function() {
-            return "userroute";
-            }
-        });
+        res.json(hbsObject);
     });
 });
 
+//get user by name
+router.get("/:name", function(req, res){
+    db.User.findOne({
+      where: {
+        name: req.params.name
+      },
+      include: [db.Roast]
+    }
+    ).then(function(data){
+        var hbsObject = {users:data};
+        res.json(hbsObject);
+    });
+});
+
+//get user by username
+router.get("/:username", function(req, res){
+    db.User.findOne({
+      where: {
+        username: req.params.username
+      },
+      include: [db.Roast]
+    }
+    ).then(function(data){
+        var hbsObject = {users:data};
+        res.json(hbsObject);
+    });
+});
+
+
+//get user by username and password
+//use for login
+router.get("/:name/:password", function(req, res){
+    db.User.findOne({
+      where: {
+        username: req.params.name,
+        password: req.params.password
+      },
+      include: [db.Roast]
+    }
+    ).then(function(data){
+        var hbsObject = {users:data};
+        res.json(hbsObject);
+    });
+});
+
+//create a user with name, username, password, image
 router.post("/", function(req, res){
-    if(!req.body.name || !req.body.password || !req.body.image){
+    //must input name, username, password, image
+    //******maybe this could be refactored to a more concise format */
+    if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){
         console.log("order was not properly completed");
         res.redirect("/users")
     }
@@ -47,6 +95,7 @@ router.post("/", function(req, res){
         db.User.create({
             "name": req.body.name,
             "password": req.body.password,
+            "username": req.body.username,
             "image": req.body.image
         }).then( function(dbUser)
         {
@@ -55,8 +104,11 @@ router.post("/", function(req, res){
     }
 });
 
-router.put("/:id", function(req, res){
+//update users
+//update name and password
+router.put("n/pw/:id", function(req, res){
     db.User.update({
+        //can I user req.body here to update any parameters passed?
         name: req.body.name, 
         password:req.body.password},
         {
@@ -66,6 +118,18 @@ router.put("/:id", function(req, res){
       });
 });
 
+//update image
+router.put("image/:id", function(req, res){
+    db.User.update({
+        image: req.body.image},
+        {
+            where: {id: req.params.id}
+      }).then(function(dbUser) {
+        res.redirect("/users");
+      });
+});
+
+//delete user
 router.delete("/:id", function(req, res){
     db.User.destroy({
       where: {
