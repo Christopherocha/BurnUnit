@@ -1,5 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+html {
+    height: 100% !important;
+}
+
 body {
     background: #efebe9;
+    background-image: url("../images/fire.png");
+    background-position: 100%;
+    height: 100% !important;
+}
+
+h1 {
+    color: #607d8b;
+    border-bottom: 2px solid #26A69A;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 0px;
 }
 
 h2 {
@@ -20,7 +37,12 @@ a:hover {
 
 label {
     color: #607d8b;
-    font-size: 18px;
+    font-size: 22px;
+}
+
+input {
+    font-weight: 900;
+    font-size: 18px !important;
 }
 
 .logIn {
@@ -30,10 +52,23 @@ label {
     max-width: 800px;
     background-color: rgba(250, 250, 250, .75);
     border-radius: 20px;
-    padding: 40px;
+    padding: 35px 10%;
     font-size: 20px;
     border: 2px solid #607d8b;
 }
+
+.launch {
+    text-align: left;
+    margin: 20px auto;
+    width: 95%;
+    max-width: 800px;
+    background-color: rgba(250, 250, 250, .75);
+    border-radius: 20px;
+    padding: 35px 10%;
+    font-size: 20px;
+    border: 2px solid #607d8b;
+}
+
 
 button:active {
     background: lightgray !important;
