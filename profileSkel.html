@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+    <!-- Sourcing firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <!-- Our Stylesheet -->
+    <link rel="stylesheet" href="public/assets/css/style.css" type="text/css" />
+    <title>Profile</title>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+        <nav class="z-depth-4">
+            <div class="nav-wrapper">
+            <a href="launchPad.html" class="brand-logo"><span class="glyphicon glyphicon-fire"></span>burnUnit</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="profileSkel.html">Profile</a></li>
+                <li><a href="indexSkeleton.html">Roast!</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="profileSkel.html">Profile</a></li>
+                <li><a href="indexSkeleton.html">Roast!</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+            </div>
+        </nav>
+    <section class="row">
+        <div class="col s12">
+            <h1>Profile</h1>
+        </div>
+    </section>
+    <!-- profile photo and user info section -->
+    <section class="row">
+        <div class="col m6 s12 center-align">
+            <div class="row">
+                <!-- user photo insert -->
+                <img class="responsive-img" style="max-width: 450px" src="https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/12928421_1106927535997246_6108832928603042674_n.jpg?oh=2556f806f35c62911f36231838a019d9&oe=59FEE8E2">
+            </div>
+            <div class="row">
+                <a class="waves-effect waves-light btn"><i class="material-icons left">insert_photo</i>Change Photo</a>
+            </div>
+        </div>
+        <div class="col m6 s12">
+            <div class="card-panel">
+                <span class="black-text">
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>Username</h5></div>
+                        <!-- username insert -->
+                        <div class="col m8 s12">Jokester8745</div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>Email</h5></div>
+                        <!-- email insert -->
+                        <div class="col m8 s12">Watupbro82@yahoo.com</div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5><i class="material-icons left">location_on</i></h5></div>
+                        <!-- location insert -->
+                        <div class="col m8 s12">Austin, TX</div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>About Me</h5></div>
+                        <!-- blurb insert -->
+                        <div class="col m8 s12">I love baking.  Well, not so much baking as eating baked goods.  I love cake.  I really love cake batter.  I slather it all over my body, then sunbathe till just fluffy enough.  Then I feed myself to homeless people.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                        <a class="waves-effect waves-light btn right"><i class="material-icons">edit</i>Edit Info</a>
+                        </div>
+                    </div>
+                </span>
+            </div>
+    </section>
+    <!-- user burns and stats -->
+    <section class="row">
+        <div class="col m6 s12">
+            <div class="row center-align">
+            <div class="col m12">
+                <h5>Sad-Ass Stats</h5>
+            </div>
+            </div>
+            <div class="card-panel">
+                <span class="black-text">
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>Wins</h5></div>
+                        <!-- win count insert -->
+                        <div class="col m8 s12">2</div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>Roasts</h5></div>
+                        <!-- roast count insert -->
+                        <div class="col m8 s12">17</div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>Most Recent Burn</h5></div>
+                        <!-- most recent input insert -->
+                        <div class="col m8 s12">"You have a dumb shirt"</div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col m4 s12"><h5>Ranking</h5></div>
+                        <!-- ranking insert -->
+                        <div class="col m8 s12">Pretty Pathetic</div>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="col m4 s8">
+            <div class="row">
+                <div class="col m12 center-align">
+                    <!-- query database for last 2-3 wins -->
+                    <h5>Most Recent Wins</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- insert roastee photo, username-->
+                        <img style="max-width: 100px; display: block; margin: auto;" src="https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/280055_2289006864966_4414621_o.jpg?oh=f3165f65c0a69eaf222912bbbd8e1a74&oe=59F4992E">
+                        <span class="black-text card-title">UnCoolGuy1985</span>
+                    </div>
+                    <!-- insert roast quote and timestamp -->
+                    <div class="center-align card-content">
+                        <p>"Q: What's your favorite color? A: Cocaine"</p>
+                        <p style="font-size: 12px; font-weight: normal;"> Admitted to the burnUnit on August 7 at 10:20pm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- insert roastee photo, username-->
+                        <img style="max-width: 100px; display: block; margin: auto;" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NTM2OTU5M15BMl5BanBnXkFtZTcwOTExNjM0Mg@@._V1_UX214_CR0,0,214,317_AL_.jpg">
+                        <span class="black-text card-title">SporkOnTheBeach</span>
+                    </div>
+                    <!-- insert roast quote and timestamp -->
+                    <div class="center-align card-content">
+                        <p>"Way to be dumb"</p>
+                        <p style="font-size: 12px; font-weight: normal;"> Admitted to the burnUnit on August 4 at 9:03pm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- insert roastee photo, username-->
+                        <img style="max-width: 100px; display: block; margin: auto;" src="https://vignette3.wikia.nocookie.net/theoffice/images/8/89/110714office-jenna1.jpg/revision/latest?cb=20130513021443">
+                        <span class="black-text card-title">SrirchaPam</span>
+                    </div>
+                    <!-- insert roast quote and timestamp -->
+                    <div class="center-align card-content">
+                        <p>"You're dumb and take way too long to figure out your life"</p>
+                        <p style="font-size: 12px; font-weight: normal;"> Admitted to the burnUnit on August 2 at 3:34pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+            <script type="text/javascript">
+                $( document ).ready(function(){
+                    $(".button-collapse").sideNav();
+                })
+            </script>
+</html>
