@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
          }
     }        
 
- },
+ });
 //check out using bycrypt to make passwords safer
 //  {
 //     hooks: {
@@ -63,7 +63,7 @@ module.exports = function(sequelize, DataTypes) {
 //       }
 //     }    
 // }
-);
+
 
    User.associate = function(models) {
     // associate user with roasts they won
