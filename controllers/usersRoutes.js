@@ -70,24 +70,48 @@ router.get("/:username", function(req, res){
 
 //get user by username and password
 //use for login
-router.get("/:name/:password", function(req, res){
+
+router.post("/login", (req, res) => {
+    var username = req.body.name,
+        password = req.body.password;
+
     db.User.findOne({
-      where: {
-        username: req.params.name,
-        password: req.params.password
-      },
-      include: [db.Roast]
-    }
-    ).then(function(data){
-        console.log(data);
-        if(data){
-            
-            var hbsObject = {user:data};
+        where:
+        { username: username, password: password },
+        include: [db.Roast]
+    }).then(function (user) {
+        console.log("selected user: " + user);
+        if (!user) {
+            res.redirect('/login');
+        } else {
+            //check out using sessions to check the user status
+            //req.session.user = user.dataValues;
+            var hbsObject = { user: user };
             res.render("partials/profile", hbsObject);
-            
         }
     });
 });
+
+
+// router.get("/login", function(req, res){
+//     console.log("req.body: ", req.body)
+//     db.User.findOne({
+//       where: {
+//         username: req.body.name,
+//         password:req.body.password
+//       },
+//       include: [db.Roast]
+//     }
+//     ).then(function(data){
+//         console.log(data);
+//         if(data){
+            
+//             var hbsObject = {user:data};
+//             res.render("partials/profile", hbsObject);
+            
+//         }
+//     });
+// });
 
 //create a user with name, username, password, image
 router.post("/", function(req, res){
@@ -108,7 +132,7 @@ router.post("/", function(req, res){
         {
             // console.log(dbUser.dataValues)
             orm.userCreate(dbUser.dataValues);
-            res.redirect("/users");
+            res.redirect("/login");
         });
     }
 });
