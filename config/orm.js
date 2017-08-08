@@ -1,19 +1,23 @@
-var fireBase = require('firebase');
-var config = ('./fbConfig');
+var firebase = require('firebase-admin');
 var user = ('../controllers/usersRoutes');
 var roast = ('../controllers/roastsRoutes');
 
-//  Initialize the firebase app
-firebase.initializeApp(config);
 var database = firebase.database();
 
 var firebaseQueries = {
     userCreate: function(user) {
-        firebase.auth().createUserWithEmailAndPassword(user.email, user.pwd).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            console.log(error);
+        console.log(user)//.name + "\n" + user.password)
+        var idConvert = JSON.stringify(user.id);
+        firebase.auth().createUser({
+            uid: idConvert,
+            email: user.name + '@gmail.com',
+            password: user.password
+        })
+        .then(function(user) {
+            console.log("created account")
+        })
+        .catch(function(err){
+            console.log(err);
         })
     },
     userLogin: function(user){
@@ -38,7 +42,7 @@ ref.on("value", function(snapshot) {
     console.log(snapshot.val());
 });
 // End value change update
-
+module.exports = firebaseQueries;
 
 //  Create account logic
 function validatePwd (pwd1, pwd2) {
@@ -49,14 +53,14 @@ function validatePwd (pwd1, pwd2) {
     }
 }
 
-$("#pwd2").on("blur", function() {
-    var pwd1 = $("#pwd1").text();
-    var pwd2 = $("#pwd2").text();
+// $("#pwd2").on("blur", function() {
+//     var pwd1 = $("#pwd1").text();
+//     var pwd2 = $("#pwd2").text();
     
-    if (validatePwd(pwd1, pwd2)){
-        $("#createAcct").prop("disabled", false);
-    }
-})
+//     if (validatePwd(pwd1, pwd2)){
+//         $("#createAcct").prop("disabled", false);
+//     }
+// })
 //  End create logic
 
 
