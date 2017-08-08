@@ -21,7 +21,7 @@ router.get("/roasts", function(req, res){
 router.get("/", function(req, res){
     db.User.findAll({include: [db.Roast] }).then(function(data){
         var hbsObject = {users:data};
-        res.render("userroute", hbsObject);
+        res.render("partials/user/users", hbsObject);
     });
 });
 
@@ -79,8 +79,13 @@ router.get("/:name/:password", function(req, res){
       include: [db.Roast]
     }
     ).then(function(data){
-        var hbsObject = {users:data};
-        res.json(hbsObject);
+        console.log(data);
+        if(data){
+            
+            var hbsObject = {user:data};
+            res.render("partials/profile", hbsObject);
+            
+        }
     });
 });
 
@@ -97,6 +102,7 @@ router.post("/", function(req, res){
             "name": req.body.name,
             "password": req.body.password,
             "username": req.body.username,
+            "email": req.body.email,
             "image": req.body.image
         }).then( function(dbUser)
         {

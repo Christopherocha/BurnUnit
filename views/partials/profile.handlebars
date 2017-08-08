@@ -1,3 +1,5 @@
+
+    {{#user}}
 <section class="row">
         <div class="col s12">
             <h1>Profile</h1>
@@ -20,12 +22,12 @@
                     <div class="row valign-wrapper">
                         <div class="col m4 s12"><h5>Username</h5></div>
                         <!-- username insert -->
-                        <div class="col m8 s12">Jokester8745</div>
+                        <div class="col m8 s12" id="username">{{this.username}}</div>
                     </div>
                     <div class="row valign-wrapper">
                         <div class="col m4 s12"><h5>Email</h5></div>
                         <!-- email insert -->
-                        <div class="col m8 s12">Watupbro82@yahoo.com</div>
+                        <div class="col m8 s12">{{this.email}}</div>
                     </div>
                     <div class="row valign-wrapper">
                         <div class="col m4 s12"><h5><i class="material-icons left">location_on</i></h5></div>
@@ -58,12 +60,12 @@
                     <div class="row valign-wrapper">
                         <div class="col m4 s12"><h5>Wins</h5></div>
                         <!-- win count insert -->
-                        <div class="col m8 s12">2</div>
+                        <div class="col m8 s12">{{this.wins}}</div>
                     </div>
                     <div class="row valign-wrapper">
                         <div class="col m4 s12"><h5>Roasts</h5></div>
                         <!-- roast count insert -->
-                        <div class="col m8 s12">17</div>
+                        <div class="col m8 s12">{{this.roasts}}</div>
                     </div>
                     <div class="row valign-wrapper">
                         <div class="col m4 s12"><h5>Most Recent Burn</h5></div>
@@ -129,3 +131,5 @@
             </div>
         </div>
     </section>
+
+    {{/user}}
