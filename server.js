@@ -4,6 +4,16 @@ var override = require("method-override");
 var path = require("path");
 var hb = require("express-handlebars");
 var db = require("./models");
+var fireBase = require('firebase');
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./config/burnunit-7cd3d-firebase-adminsdk-s1mo7-c6af3fae0d");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://burnunit-7cd3d.firebaseio.com"
+});
 
 var port = 8080;
 
@@ -15,12 +25,10 @@ app.use(override("_method"));
 app.engine("handlebars", hb({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-
 var routes = require("./controllers/routes.js");
 var usersRoutes = require("./controllers/usersRoutes.js");
 var roastsRoutes = require("./controllers/roastsRoutes.js");
 var quotesRoutes = require("./controllers/quotesRoutes.js");
-
 
 app.use("/", routes);
 app.use("/users", usersRoutes);
@@ -32,3 +40,4 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("App listening on PORT " + port);
   });
 });
+

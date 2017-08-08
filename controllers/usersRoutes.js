@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 var db = require("../models");
+var orm = require('../config/orm')
 
 //using this route to create a temporary roastee in the roastrouts.handlebars
 //might not need this in the future
@@ -99,6 +100,8 @@ router.post("/", function(req, res){
             "image": req.body.image
         }).then( function(dbUser)
         {
+            // console.log(dbUser.dataValues)
+            orm.userCreate(dbUser.dataValues);
             res.redirect("/users");
         });
     }
