@@ -33,7 +33,7 @@
 <div class="row"><div id="displayQuotes" class="m12 s12"></div></div>
 
 <div class="row">
-    <form class="create-update-form col m6 s12" action="/quotes" method="POST">
+    <form class="create-update-form col m6 s12">
         <div class="row">
             <div class="input-field col s12 launch">
 
@@ -46,20 +46,21 @@
 
                 
                 <div class="">
-                    <article class="">
+                    <article class="hidden">
                         <input type="text" class="" id="UserId" name="UserId" value="{{this.UserId}}">
                     </article>
                 </div>
                 <div class="">
-                    <article class="">
+                    <article class="hidden">
                         <input type="text" class="" id="RoastId" name="RoastId" value="{{this.id}}">
                     </article>
                 </div>
 
-            </div>
-                <button class="btn waves-effect waves-light" type="submit">Burn
+            
+                <button class="btn waves-effect waves-light" id="burn" type="submit">Burn
                     <i class="material-icons right">flash_on</i>
                 </button>
+            </div>    
 
         </div>
     </form>

@@ -25,7 +25,7 @@ router.get("/:id", function(req, res){
       include: [db.User]
     }).then(function(data){
         var hbsObject = {roasts:data};
-        res.render("roastroute", hbsObject);
+        res.render("partials/roast/roast", hbsObject);
     });
 });
 

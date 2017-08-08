@@ -34,7 +34,9 @@ app.use("/users", usersRoutes);
 app.use("/roasts", roastsRoutes);
 app.use("/quotes", quotesRoutes);
 
-db.sequelize.sync({ force: true }).then(function() {
+
+//removed force : true in .sync({force:true}) to keep the information inserted in the table
+db.sequelize.sync({}).then(function() {
   app.listen(port, function() {
     console.log("App listening on PORT " + port);
   });
