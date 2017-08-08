@@ -1,0 +1,28 @@
+<article class="">
+    <a href="users">
+        <h2 class="">Users</h2>
+    </a>
+</article>
+
+<article>
+    <ul>
+        {{#each users}}
+        <li class="users">
+
+            <article class="">
+                <p>{{this.name}}</p>
+                <img src="{{this.image}}" alt="{{this.name}}" title="{{this.name}}" />
+
+                <form action="/users/{{this.id}}?_method=PUT" method="POST">
+                    <input type="text">
+                    <button type="submit" class="create"><span>Update</span></button>
+                </form>
+                {{> delete}}
+            </article>
+
+
+        </li>
+        {{/each}}
+    </ul>
+
+</article>

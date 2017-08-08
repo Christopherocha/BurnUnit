@@ -1,93 +1,23 @@
+<nav class="z-depth-4">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo"><span class="glyphicon glyphicon-fire"></span>burnUnit</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="login">Login</a></li>
+      <li><a href="index">Sign Up</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="login">Login</a></li>
+      <li><a href="index">Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <nav class="z-depth-4">
-            <div class="nav-wrapper">
-            <a href="/" class="brand-logo"><span class="glyphicon glyphicon-fire"></span>burnUnit</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="login">Login</a></li>
-              <li><a href="index">Sign Up</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-              <li><a href="login">Login</a></li>
-              <li><a href="index">Sign Up</a></li>
-            </ul>
-            </div>
-        </nav>
-
-        <article class="">
-          <a href="users"><h2 class="">Users</h2></a>
-        </article>
-        
-        <article>
-          <ul>
-            {{#each users}} 
-            <li class="users">
-
-              <article class="">
-                <p>{{this.name}}</p>
-                <img src="{{this.image}}" alt="{{this.name}}" title="{{this.name}}" />
-              
-              <form action="/users/{{this.id}}?_method=PUT" method="POST">
-                <input type="text">
-                <button type="submit" class="create"><span>Update</span></button>
-              </form>
-              </article>
+{{> (whichPartial) }}
 
 
-            </li>
-            {{/each}}
-          </ul>
-
-        </article>
-
-          <form class="create-update-form logIn z-depth-5" action="/users" method="POST">
-
-            <div class="">
-              <article class="">
-                <label for="name">Name:</label>
-              </article>
-              <article class="">
-                <input type="text" class="" id="name" name="name">
-              </article>
-            </div>
-
-            <div class="">
-              <article class="">
-                <label for="username">User Name:</label>
-              </article>
-              <article class="">
-                <input type="text" class="" id="username" name="username">
-              </article>
-            </div> 
-
-            <div class="">
-              <article class="">
-                <label for="password">Password:</label>
-              </article>
-              <article class="">
-                <input type="password" class="" id="password" name="password">
-              </article>
-            </div> 
-
-            <div class="">
-              <article class="">
-                <label for="image">Image:</label>
-              </article>
-              <article class="">
-                <input type="text" class="" id="image" name="image">
-              </article>
-            </div> 
-
-            <div class="">
-              <button type="submit" class="create z-depth-2" ><span>Create</span></button>
-          
-            
-            </div>
-            
-          </form>
-
-          <script type="text/javascript">
-            $( document ).ready(function(){
-              $(".button-collapse").sideNav();
-            })
-          </script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".button-collapse").sideNav();
+  })
+</script>
