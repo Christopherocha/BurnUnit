@@ -2,8 +2,6 @@ var firebase = require('firebase-admin');
 var user = ('../controllers/usersRoutes');
 var roast = ('../controllers/roastsRoutes');
 
-var database = firebase.database();
-
 var firebaseQueries = {
     userCreate: function(user) {
         console.log(user)//.name + "\n" + user.password)
