@@ -37,8 +37,8 @@ router.get("/roast/:id", function(req, res){
       },
       include : [db.Roast]
     }).then(function(data){
-        var hbsObject = {quotes:data};
-        res.render("quoteroute", hbsObject);
+        //var hbsObject = {quotes:data};
+        res.json(data);
     });
 });
 
@@ -85,9 +85,10 @@ router.get("/win/:id", function(req, res){
 
 //create quote with quote, UserId, RoastId
 router.post("/", function(req, res){
+    console.log(req.body);
     if(!req.body.quote || !req.body.UserId || !req.body.RoastId){
         console.log("needs quote, userid and roastid");
-        res.redirect("/quotes")
+        res.redirect("/roast")
     }
     else{
         db.Quote.create({
@@ -96,7 +97,7 @@ router.post("/", function(req, res){
             RoastId: req.body.RoastId
         }).then( function(dbQuote)
         {
-            res.redirect("/quotes");
+            res.json(dbQuote);
         });
     }
 });

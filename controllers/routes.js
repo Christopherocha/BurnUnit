@@ -19,4 +19,12 @@ router.get("/profile", function(req, res){
     res.render("partials/profile");
 });
 
+router.get("/roast", function(req, res){
+    res.render("partials/roast/roast");
+});
+
+router.get("/roasts", function(req, res){
+    res.render("partials/roast/roasts");
+});
+
 module.exports = router;
