@@ -4,7 +4,6 @@ var override = require("method-override");
 var path = require("path");
 var hb = require("express-handlebars");
 var db = require("./models");
-var fireBase = require('firebase');
 
 var admin = require("firebase-admin");
 
