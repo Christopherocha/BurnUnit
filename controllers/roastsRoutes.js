@@ -12,7 +12,7 @@ router.get("/", function(req, res){
     db.Roast.findAll({}).then(function(data){
         var hbsObject = {roasts:data};
         console.log(hbsObject);
-        res.render("roastroute", hbsObject);
+        res.render("partials/roast/roasts", hbsObject);
     });
 });
 
@@ -80,7 +80,9 @@ router.post("/:id", function(req, res){
             UserId:req.params.id
         }).then( function(dbRoast)
         {
-            res.redirect("/roasts");
+            console.log("creating roast");
+            var hbsObject = {roast:dbRoast}
+            res.render("partials/roast/roast", hbsObject);
         });
     }
 });
