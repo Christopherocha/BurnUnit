@@ -127,7 +127,9 @@ router.post("/", function(req, res){
             "password": req.body.password,
             "username": req.body.username,
             "email": req.body.email,
-            "image": req.body.image
+            "image": req.body.image,
+            "about": req.body.about,
+            "location": req.body.location
         }).then( function(dbUser)
         {
             // console.log(dbUser.dataValues)

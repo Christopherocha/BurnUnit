@@ -28,8 +28,9 @@ module.exports = function(sequelize, DataTypes) {
      }, 
     email:{
          type: DataTypes.STRING,
-         allowNull: false,
+         allowNull: true,
          validate:{
+             isEmail: true,
              len:[2]
          }
      },                 
@@ -40,6 +41,20 @@ module.exports = function(sequelize, DataTypes) {
              len:[1]
          }
     },
+    location:{
+         type: DataTypes.STRING,
+         allowNull: true,
+         validate:{
+             len:[2]
+        }
+    },
+    about:{
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate:{
+             len:[1, 300]
+         }
+    },        
     rank:{
          type: DataTypes.INTEGER,
          allowNull: true,
