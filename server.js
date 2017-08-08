@@ -6,13 +6,14 @@ var hb = require("express-handlebars");
 var db = require("./models");
 
 var admin = require("firebase-admin");
-
 var serviceAccount = require("./config/burnunit-7cd3d-firebase-adminsdk-s1mo7-c6af3fae0d");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://burnunit-7cd3d.firebaseio.com"
 });
+
+var database = admin.database();
 
 var port = 8080;
 
