@@ -1,0 +1,39 @@
+{{#user}}
+
+<div class="row">
+    <div class="col m6 s12">
+        <!-- chat info -->
+        <div class="input-field halfChat">
+            <textarea id="textarea1" class="materialize-textarea" data-length="120" style="height: 100%"></textarea>
+            <label for="textarea1">Chat</label>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Chat<i class="material-icons right">send</i></button>
+        </div>
+    </div>
+    <div class="col m6 s12">
+        <div class="row">
+            <div class="col m12 center-align" style="padding: 50px;">
+                <h4>Ready?</h4>
+                <form class="create-update-form " action="/roasts/{{this.id}}" method="POST">
+                    <button type="submit" class="btn waves-effect waves-light btn-large"><span>Get 'em!</span></button>
+                </form>
+                </div>
+                </div>
+        <div class="row">
+            <div class="col m12">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- insert last roastee image and winning quote - partial -->
+                        <img style="max-width: 100px; display: block; margin: auto;" src="https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/280055_2289006864966_4414621_o.jpg?oh=f3165f65c0a69eaf222912bbbd8e1a74&oe=59F4992E">
+                        <span style="color: #000;" class="card-title">Recently Burned</span>
+                    </div>
+                    <div style="text-align: center;" class="card-content">
+                        <p>"Q: What's your favorite color? A: Cocaine"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{/user}}

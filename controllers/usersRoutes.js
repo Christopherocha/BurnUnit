@@ -87,7 +87,7 @@ router.post("/login", (req, res) => {
             //check out using sessions to check the user status
             //req.session.user = user.dataValues;
             var hbsObject = { user: user };
-            res.render("partials/profile", hbsObject);
+            res.render("partials/start", hbsObject);
         }
     });
 });
