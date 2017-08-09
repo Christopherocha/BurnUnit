@@ -1,0 +1,64 @@
+
+        <article class="">
+          <a href="quotes"><h2 class="">Quotes</h2></a>
+        </article>
+        
+        <article class="">
+          <ul>
+            {{#each quotes}} 
+            <li>
+
+              <article class="tile is-child is-12 notification is-patty shadow">
+                <p>{{this.quote}} - {{this.UserId}}</p>
+              </article>
+              
+              <form action="/quotes/{{this.id}}?_method=PUT" method="POST">
+                <input type="text">
+                <button type="submit" class=" ">Update</button>
+              </form>
+
+
+            </li>
+            {{/each}}
+          </ul>
+
+        </article>
+
+          <form id="create-quote" class="create-update-form logIn z-depth-5" action="/quotes/" method="POST">
+
+            <div class="">
+              <article class="">
+                <label for="UserId">user:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="UserId" name="UserId">
+              </article>
+            </div>
+
+            <div class="">
+              <article class="">
+                <label for="RoastId">roast:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="RoastId" name="RoastId">
+              </article>
+            </div>
+
+            <div class="">
+              <article class="">
+                <label for="quote">quote:</label>
+              </article>
+              <article class="tile is-child is-10">
+                <input type="text" class="" id="quote" name="quote">
+              </article>
+            </div>
+                    
+
+            <div class="">
+              <button type="submit" class="" >create</button>
+          
+            
+            </div>
+            
+          </form>
+<!--<script type="text/javascript" src="assets/js/roasts.js"></script>-->
