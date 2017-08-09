@@ -114,7 +114,7 @@ router.post("/login", (req, res) => {
 // });
 
 //create a user with name, username, password, image
-router.post("/", function(req, res){
+router.post("/users", function(req, res){
     //must input name, username, password, image
     //******maybe this could be refactored to a more concise format */
     if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){

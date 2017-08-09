@@ -1,4 +1,5 @@
-var firebase = require('firebase-admin');
+var admin = require('firebase-admin');
+var firebase = require('firebase');
 var user = ('../controllers/usersRoutes');
 var roast = ('../controllers/roastsRoutes');
 
@@ -6,7 +7,7 @@ var firebaseQueries = {
     userCreate: function(user) {
         console.log(user)//.name + "\n" + user.password)
         var idConvert = JSON.stringify(user.id);
-        firebase.auth().createUser({
+        admin.auth().createUser({
             uid: idConvert,
             email: user.name + '@gmail.com',
             password: user.password
@@ -19,7 +20,10 @@ var firebaseQueries = {
         })
     },
     userLogin: function(user){
-        firebase.auth().signInWithEmailAndPassword(user.email, user.pwd).catch(function(error) {
+        firebase.auth().signInWithEmailAndPassword(user.email, user.pwd).then(function(user){
+
+        })
+        .catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
 
