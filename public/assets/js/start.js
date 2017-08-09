@@ -16,5 +16,21 @@ $(document).ready(function(){
     }
     else {
         console.log("no window.user")
-    }    
+    }
+
+    $("#chatSubmit").click(function(){
+        event.preventDefault();
+
+        if ($("#textarea1").val() !== ""){
+
+            var message = $("#textarea1").val();
+            $("#textarea1").val("");
+
+            $("#chatMsg").append("<div>" + UserId + ": " + message + "</div>");
+
+        }
+
+    })
+    
+
 })
