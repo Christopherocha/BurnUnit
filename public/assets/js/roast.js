@@ -10,12 +10,12 @@ $.get("/quotes/roast/"+roastId, function(data) {
 });
 }
 
-function displayQuotes(quote){
+function displayQuotes(quotes){
     var displayQuotes = $("#displayQuotes");
     var html = "";
-
-    html += "<p> user: " + quote.UserId + " quote: " + quote.quote + "</p>";
-    
+    for(i=0; i<quotes.length; i++){
+    html += "<p> user: " + quotes[i].UserId + " quote: " + quotes[i].quote + "</p>";
+    }
 
     displayQuotes.html(html);
 }
@@ -36,10 +36,16 @@ $(document).on("click", "#burn", function(){
     }
     else{
         $.post("/quotes", quoteObj, function(data) {
-            if (data) {
-                console.log(data);
+            if (quote) {
+                console.log(quote);
                 var html = "<p>" + data + "</p>";
-                displayQuotes(data);
+                //displayQuotes(data);
+                $.get("/quotes/roast/"+roastId, function(quotes) {
+                    if (quotes) {
+                        console.log(quotes);
+                        displayQuotes(quotes)
+                    }
+                });
             }
         });
     }

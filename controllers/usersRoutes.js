@@ -72,12 +72,12 @@ router.get("/:username", function(req, res){
 //use for login
 
 router.post("/login", (req, res) => {
-    var username = req.body.name,
+    var email = req.body.email,
         password = req.body.password;
 
     db.User.findOne({
         where:
-        { username: username, password: password },
+        { email: email, password: password },
         include: [db.Roast]
     }).then(function (user) {
         console.log("selected user: " + user);
