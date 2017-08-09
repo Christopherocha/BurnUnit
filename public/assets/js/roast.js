@@ -1,8 +1,9 @@
+console.log(JSON.parse(localStorage.getItem('user')))
 window.RoastId = $("#RoastId").val();
 
 //get users to force a roastee
 if(RoastId){
-$.get("/quotes/roast/"+roastId, function(data) {
+$.get("/quotes/roast/"+RoastId, function(data) {
       if (data) {
         console.log(data);
 
@@ -24,6 +25,8 @@ $(document).on("click", "#burn", function(){
     var quote = $("#quote").val();
     var UserId = $("#UserId").val();
     var RoastId = $("#RoastId").val();
+
+    $("#quote").val("");
 
     var quoteObj = {
         quote:quote,
