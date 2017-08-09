@@ -19,7 +19,7 @@ var database = admin.database();
 var firebase = require('firebase');
 var config = require('./config/fbConfig');
 
-firebase.initializeApp({ config });
+firebase.initializeApp(config);
 var auth = firebase.auth();
 
 var port = 8080;

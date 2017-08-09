@@ -20,8 +20,8 @@ var firebaseQueries = {
         })
     },
     userLogin: function(email, pwd){
-        admin.auth().signInWithEmailAndPassword(email, pwd).then(function(user){
-            console.log("we made it");
+        firebase.auth().signInWithEmailAndPassword(email, pwd).then(function(user){
+            console.log(user.uid);
         })
         .catch(function(error) {
             var errorCode = error.code;
