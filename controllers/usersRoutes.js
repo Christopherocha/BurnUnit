@@ -5,7 +5,7 @@ var router = express.Router();
 var db = require("../models");
 var orm = require('../config/orm')
 
-//using this route to create a temporary roastee in the roastrouts.handlebars
+//using this route to create a temporary roastee in the roastroutes.handlebars
 //might not need this in the future
 router.get("/roasts", function(req, res){
     db.User.findAll({}).then(function(data){
@@ -70,8 +70,7 @@ router.get("/:username", function(req, res){
 
 //get user by username and password
 //use for login
-
-router.post("/login", (req, res) => {
+router.post("/", (req, res) => {
     var email = req.body.email,
         password = req.body.password;
 
@@ -114,7 +113,7 @@ router.post("/login", (req, res) => {
 // });
 
 //create a user with name, username, password, image
-router.post("/", function(req, res){
+router.post("/create", function(req, res){
     //must input name, username, password, image
     //******maybe this could be refactored to a more concise format */
     if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){

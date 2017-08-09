@@ -1,5 +1,8 @@
-window.user = {username:"",
-                UserId: ""}; 
+var username = $("#email").val();
+var UserId = $("#UserId").val();
+
+window.user = {email: email,
+                UserId: UserId}; 
 
 //when login submit button is clicked check to see that username and password are entered
 //if user entered username and password, check to see if they are in the data base

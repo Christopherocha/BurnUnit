@@ -1,7 +1,7 @@
-var roastId = $("#RoastId").val();
+window.RoastId = $("#RoastId").val();
 
 //get users to force a roastee
-if(roastId){
+if(RoastId){
 $.get("/quotes/roast/"+roastId, function(data) {
       if (data) {
         console.log(data);
@@ -40,7 +40,7 @@ $(document).on("click", "#burn", function(){
                 console.log(quote);
                 var html = "<p>" + data + "</p>";
                 //displayQuotes(data);
-                $.get("/quotes/roast/"+roastId, function(quotes) {
+                $.get("/quotes/roast/"+RoastId, function(quotes) {
                     if (quotes) {
                         console.log(quotes);
                         displayQuotes(quotes)
