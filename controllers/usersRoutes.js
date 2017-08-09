@@ -72,12 +72,13 @@ router.get("/:username", function(req, res){
 //use for login
 
 router.post("/login", (req, res) => {
-    var username = req.body.name,
+    var email = req.body.name,
         password = req.body.password;
+        console.log(req.body)
 
     db.User.findOne({
         where:
-        { username: username, password: password },
+        { email: email, password: password },
         include: [db.Roast]
     }).then(function (user) {
         console.log("selected user: " + user);
@@ -86,6 +87,7 @@ router.post("/login", (req, res) => {
         } else {
             //check out using sessions to check the user status
             //req.session.user = user.dataValues;
+            orm.userLogin(email, password);
             var hbsObject = { user: user };
             res.render("partials/profile", hbsObject);
         }
@@ -114,7 +116,7 @@ router.post("/login", (req, res) => {
 // });
 
 //create a user with name, username, password, image
-router.post("/users", function(req, res){
+router.post("/", function(req, res){
     //must input name, username, password, image
     //******maybe this could be refactored to a more concise format */
     if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){

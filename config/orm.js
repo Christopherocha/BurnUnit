@@ -19,9 +19,9 @@ var firebaseQueries = {
             console.log(err);
         })
     },
-    userLogin: function(user){
-        firebase.auth().signInWithEmailAndPassword(user.email, user.pwd).then(function(user){
-
+    userLogin: function(email, pwd){
+        admin.auth().signInWithEmailAndPassword(email, pwd).then(function(user){
+            console.log("we made it");
         })
         .catch(function(error) {
             var errorCode = error.code;
@@ -39,10 +39,10 @@ var firebaseQueries = {
     }
 }
 //  On value DB change command to feed content to DOM
-var ref = firebase.database().ref('/roasts');
-ref.on("value", function(snapshot) {
-    console.log(snapshot.val());
-});
+// var ref = firebase.database().ref('/roasts');
+// ref.on("value", function(snapshot) {
+//     console.log(snapshot.val());
+// });
 // End value change update
 module.exports = firebaseQueries;
 
