@@ -5,6 +5,7 @@ var path = require("path");
 var hb = require("express-handlebars");
 var db = require("./models");
 
+
 var admin = require("firebase-admin");
 var serviceAccount = require("./config/burnunit-7cd3d-firebase-adminsdk-s1mo7-c6af3fae0d");
 
@@ -15,7 +16,13 @@ admin.initializeApp({
 
 var database = admin.database();
 
-var port = 8080;
+var firebase = require('firebase');
+var config = require('./config/fbConfig');
+
+firebase.initializeApp(config);
+var auth = firebase.auth();
+
+var port = process.env.PORT || 8080;
 
 var app = express();
 

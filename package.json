@@ -20,6 +20,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "firebase": "^4.2.0",
     "firebase-admin": "^5.1.0",
     "method-override": "^2.3.9",
     "mysql2": "^1.4.0",

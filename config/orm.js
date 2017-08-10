@@ -1,15 +1,16 @@
-var firebase = require('firebase-admin');
+var admin = require('firebase-admin');
+var firebase = require('firebase');
 var user = ('../controllers/usersRoutes');
 var roast = ('../controllers/roastsRoutes');
 
 var firebaseQueries = {
     userCreate: function(user) {
-        console.log(user)//.name + "\n" + user.password)
         var idConvert = JSON.stringify(user.id);
-        firebase.auth().createUser({
+
+        admin.auth().createUser({
             uid: idConvert,
-            email: user.name + '@gmail.com',
-            password: user.password
+            email: user.email,
+            password: user.password,
         })
         .then(function(user) {
             console.log("created account")
@@ -18,12 +19,24 @@ var firebaseQueries = {
             console.log(err);
         })
     },
-    userLogin: function(user){
-        firebase.auth().signInWithEmailAndPassword(user.email, user.pwd).catch(function(error) {
+    userLogin: function(email, pwd){
+        firebase.auth().signInWithEmailAndPassword(email, pwd)
+        .then(function(user){
+            console.log(user.uid);
+        })
+        .catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
 
             console.log(error);
+        });
+    },
+    sendPwdReset: function(email) {
+        admin.auth().sendPasswordResetEmail(email)
+        .then(function() {
+        // Email sent.
+        }).catch(function(error) {
+        // An error happened.
         });
     },
     createRoast: function(num) {
@@ -35,10 +48,10 @@ var firebaseQueries = {
     }
 }
 //  On value DB change command to feed content to DOM
-var ref = firebase.database().ref('/roasts');
-ref.on("value", function(snapshot) {
-    console.log(snapshot.val());
-});
+// var ref = firebase.database().ref('/roasts');
+// ref.on("value", function(snapshot) {
+//     console.log(snapshot.val());
+// });
 // End value change update
 module.exports = firebaseQueries;
 
