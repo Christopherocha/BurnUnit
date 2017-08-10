@@ -1,7 +1,26 @@
+$(document).ready(function () {
+
+    //load quotes on intervarl
+    var nIntervId;
+
+    function updateQuotes() {
+        nIntervId = setInterval(getQuotes, 500);
+    }
+
+    function stopTextColor() {
+        clearInterval(nIntervId);
+    }
+
+    updateQuotes();
+
+//check to see that user is stored
 console.log(JSON.parse(localStorage.getItem('user')));
 
+//get user from local storage and save to global user object
 var user = JSON.parse(localStorage.getItem('user'));
+//get the roast id of the roast that the page was rendered with
 var RoastId = $("#RoastId").val();
+//create a global roast object  
 var roast = {
     RoastId: RoastId,
     roastee: "",
@@ -9,7 +28,9 @@ var roast = {
     winner: "",
 };
 
-$.get("/roasts/" + RoastId, function (data) {
+//get the roast info
+//this might not be needed once things are moving smoothly
+$.get("/roasts/find/" + RoastId, function (data) {
     console.log(data)
     if(!data.creator){
         roast.creator = data.UserId
@@ -25,12 +46,16 @@ $.get("/roasts/" + RoastId, function (data) {
 });
 
 
-//get users to force a roastee
+
+//get print the current quotes in the roast
 if(RoastId){
  getQuotes();
 }
 
 
+//gets the quotes of the current roast and displays them in #displayQuotes <div>
+//I want to pass a function into getQuotes so I can use it with displayQuotes 
+//and getWinner
 function getQuotes() {
     $.get("/quotes/roast/" + RoastId, function (quotes) {
         if (quotes) {
@@ -39,7 +64,6 @@ function getQuotes() {
         }
     });
 }
-
 
 //displays all of the quotes for a roast
 function displayQuotes(quotes){
@@ -52,12 +76,15 @@ function displayQuotes(quotes){
     displayQuotes.html(html);
 }
 
-//displays buttons for the roastee to choose from
+//displays buttons for the roastee to choose a winner from
 function getWinner(quotes){
     var displayQuotes = $("#displayQuotes");
     var html = "";
     for(i=0; i<quotes.length; i++){
-    html += "<button class='winner' id='" + quotes[i].RoastId + "' user='"+quotes[i].UserId+"' quoteId='"+quotes[i].id+"' value='" + quotes[i].quote + "'> user: " + quotes[i].UserId + " quote: " + quotes[i].quote + "</button>";
+    html += "<p><a class='winner' id='" + quotes[i].RoastId +
+     "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
+     "' value='" + quotes[i].quote + "'> user: " + quotes[i].UserId + 
+     " quote: " + quotes[i].quote + "</a></p>";
     }
 
     displayQuotes.html(html);
@@ -85,12 +112,7 @@ $(document).on("click", "#burn", function(){
                 console.log(quote);
                 var html = "<p>" + data + "</p>";
                 //displayQuotes(data);
-                    $.get("/quotes/roast/" + RoastId, function (quotes) {
-        if (quotes) {
-            console.log(quotes);
-            displayQuotes(quotes)
-        }
-    });
+                getQuotes();
             }
         });
     }
@@ -100,23 +122,27 @@ $(document).on("click", "#burn", function(){
 //if the roastee
 $(document).on("click", ".winner", function(){
     var id = this.id
-    var UserId = $(this).attr("name");
+    var UserId = $(this).attr("user");
     var quote = $(this).attr("value");
     var quoteId = $(this).attr("quoteId")
     var req = {
-        UserId: UserId,
+        winner: UserId,
         quote: quote,
         quoteId: quoteId
     }
 
+    console.log(req.winner);
+
     //PUT http://localhost:8080/roasts/winner 404 (Not Found)
     $.ajax({
         url: "/roasts/winner/" + id,
-        type: 'PUT',
-        contentType: 'application/json',
-        data: JSON.stringify(req)
-    }).done(function (data) {
+        type: "PUT",
+        data: req,
+        success: function (data) {
+            console.log(data);
+        }
     })
+
 })
 
 //when game ends... timer runs out
@@ -125,7 +151,10 @@ if (user.UserId === roast.roastee) {
     $.get("/quotes/roast/" + RoastId, function (quotes) {
         if (quotes) {
             console.log(quotes);
-            getWinner(quotes)
+            getWinner(quotes);
         }
     });
 }
+
+
+})

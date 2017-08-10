@@ -15,7 +15,9 @@ $(document).ready(function () {
     var chatData = database.ref("/chat");
     var email = $("#email").attr("value");
     var UserId = $("#UserId").attr("value");
-    
+
+
+    $("#profile").attr("href", )
     var user = {
         email: email,
         UserId: UserId
