@@ -22,7 +22,7 @@ var config = require('./config/fbConfig');
 firebase.initializeApp(config);
 var auth = firebase.auth();
 
-var port = 8080;
+var port = process.env.PORT || 8080;
 
 var app = express();
 
