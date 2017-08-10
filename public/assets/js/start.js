@@ -40,6 +40,7 @@ $(document).ready(function () {
 
             chatData.push({
                 user: UserId,
+                email: email,
                 message: message
             });
 
@@ -59,6 +60,7 @@ $(document).ready(function () {
 
             chatData.push({
                 user: UserId,
+                email: email,
                 message: message
             });
 
@@ -77,7 +79,8 @@ $(document).ready(function () {
     function displayMsg(userId, message) {
         $('<div />').text(message).prepend($('<em/>').text(userId + ': ')).appendTo('#chatMsg');
 
-        $('#chatBox')[0].scrollTop = $('#chatBox')[0].scrollHeight;
+        // $('#chatBox').scrollTop = $('#chatBox').scrollHeight;
+        $("#chatMsg").stop().animate({ scrollTop: $("#chatMsg")[0].scrollHeight}, 1000);
     };
 
 
