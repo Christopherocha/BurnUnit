@@ -13,17 +13,36 @@ $(document).ready(function () {
 
     var database = firebase.database();
     var chatData = database.ref("/chat");
-    var email = $("#email").attr("value");
-    var UserId = $("#UserId").attr("value");
+    
+    var user = JSON.parse(sessionStorage.getItem('user'));
 
+    if(user == undefined){
+        var email = $("#email").attr("value");
+        var UserId = $("#UserId").attr("value");
+        var startUrl = "startroast/" + UserId;
+        var profileUrl = "profile/" + email + "/" + UserId;
+        var username = $("#username").attr("value");
 
-    $("#profile").attr("href", )
-    var user = {
-        email: email,
-        UserId: UserId
+        user = {
+            email: email,
+            UserId: UserId,
+            profileUrl: profileUrl,
+            startUrl: startUrl
+        }
+
+        sessionStorage.setItem('user', JSON.stringify(user));
+
+        console.log(user)
+        $("#profile-url").attr("href", user.profileUrl );
+        $("#startroast-url").attr("href", user.startUrl );
     }
 
-    localStorage.setItem('user', JSON.stringify(user));
+    else{
+        console.log(user)
+        $("#profile-url").attr("href", user.profileUrl );
+        $("#startroast-url").attr("href", user.startUrl );
+    }
+
     
     $.get("/roasts/", function(data){
         if(data){

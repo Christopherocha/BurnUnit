@@ -11,13 +11,22 @@ $(document).ready(function () {
         clearInterval(nIntervId);
     }
 
-    updateQuotes();
+    //updateQuotes();
+
 
 //check to see that user is stored
-console.log(JSON.parse(localStorage.getItem('user')));
+console.log(JSON.parse(sessionStorage.getItem('user')));
 
 //get user from local storage and save to global user object
-var user = JSON.parse(localStorage.getItem('user'));
+var user = JSON.parse(sessionStorage.getItem('user'));
+
+console.log(user);
+
+if(user){
+    $("#profile-url").attr("href", user.profileUrl );
+    $("#startroast-url").attr("href", user.startUrl );
+}
+
 //get the roast id of the roast that the page was rendered with
 var RoastId = $("#RoastId").val();
 //create a global roast object  
@@ -28,6 +37,7 @@ var roast = {
     winner: "",
 };
 
+if(RoastId){
 //get the roast info
 //this might not be needed once things are moving smoothly
 $.get("/roasts/find/" + RoastId, function (data) {
@@ -45,11 +55,9 @@ $.get("/roasts/find/" + RoastId, function (data) {
     }
 });
 
-
-
 //get print the current quotes in the roast
-if(RoastId){
- getQuotes();
+ updateQuotes();   
+ //getQuotes();
 }
 
 

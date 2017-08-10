@@ -16,15 +16,19 @@ router.get("/signup", function(req, res){
 });
 
 router.get("/profile", function(req, res){
-    res.render("partials/profile");
+    res.redirect("partials/profile");
 });
 
 router.get("/roast", function(req, res){
-    res.render("partials/roast/roast");
+    res.redirect("/login");
 });
 
 router.get("/roaststats", function(req, res){
     res.render("partials/roast/roaststats");
+});
+
+router.get("/startroast", function(req, res){
+    res.render("partials/start");
 });
 
 module.exports = router;

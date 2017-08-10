@@ -1,4 +1,12 @@
-var userId;
+var user = JSON.parse(sessionStorage.getItem('user'));
+
+console.log(user);
+
+if(user){
+    $("#profile-url").attr("href", "/users/"+user.profileUrl );
+    $("#startroast-url").attr("href", "/users/"+user.startUrl );
+}
+
 
 //query user table for current user's information this can be done through routes
 //this the route should res.json the profile page with the user object
