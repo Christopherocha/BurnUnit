@@ -1,5 +1,13 @@
-console.log(JSON.parse(localStorage.getItem('user')))
-window.RoastId = $("#RoastId").val();
+console.log( JSON.parse(localStorage.getItem('user')));
+
+var RoastId = $("#RoastId").val();
+var roast = {
+    RoastId: RoastId,
+};
+
+localStorage.setItem('currentRoast', JSON.stringify(roast));
+
+console.log(JSON.parse(localStorage.getItem('currentRoast')));
 
 //get users to force a roastee
 if(RoastId){
