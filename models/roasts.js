@@ -19,6 +19,13 @@ var Roast = sequelize.define("Roast", {
         //  }
     },
     quote:{
+         type: DataTypes.STRING,
+         allowNull: true,
+        //  validate:{
+        //      min: 1
+        //  }
+    },      
+    quoteId:{
          type: DataTypes.INTEGER,
          allowNull: true,
         //  validate:{
@@ -31,6 +38,10 @@ var Roast = sequelize.define("Roast", {
         //  validate:{
         //      len:[1]
         //  }
+    },
+    stillRoasting:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
 
  });

@@ -23,8 +23,8 @@ router.get("/roast", function(req, res){
     res.render("partials/roast/roast");
 });
 
-router.get("/roasts", function(req, res){
-    res.render("partials/roast/roasts");
+router.get("/roaststats", function(req, res){
+    res.render("partials/roast/roaststats");
 });
 
 module.exports = router;

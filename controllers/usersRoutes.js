@@ -5,7 +5,7 @@ var router = express.Router();
 var db = require("../models");
 var orm = require('../config/orm')
 
-//using this route to create a temporary roastee in the roastrouts.handlebars
+//using this route to create a temporary roastee in the roastroutes.handlebars
 //might not need this in the future
 router.get("/roasts", function(req, res){
     db.User.findAll({}).then(function(data){
@@ -67,12 +67,29 @@ router.get("/:username", function(req, res){
     });
 });
 
+router.get("/profile/:email/:id", function(req, res){
+     db.User.findOne({
+        where:
+        { email: req.params.email, id: req.params.id },
+        include: [db.Roast]
+    }).then(function (user) {
+        console.log("selected user: " + user);
+        if (!user) {
+            res.redirect('/login');
+        } else {
+            //check out using sessions to check the user status
+            //req.session.user = user.dataValues;
+            var hbsObject = { user: user };
+            res.render("partials/profile", hbsObject);
+        }
+    });
+});
+
 
 //get user by username and password
 //use for login
-
-router.post("/login", (req, res) => {
-    var email = req.body.name,
+router.post("/", (req, res) => {
+    var email = req.body.email,
         password = req.body.password;
         console.log(req.body)
 
@@ -89,34 +106,14 @@ router.post("/login", (req, res) => {
             //req.session.user = user.dataValues;
             orm.userLogin(email, password);
             var hbsObject = { user: user };
-            res.render("partials/profile", hbsObject);
+            res.render("partials/start", hbsObject);
         }
     });
 });
 
 
-// router.get("/login", function(req, res){
-//     console.log("req.body: ", req.body)
-//     db.User.findOne({
-//       where: {
-//         username: req.body.name,
-//         password:req.body.password
-//       },
-//       include: [db.Roast]
-//     }
-//     ).then(function(data){
-//         console.log(data);
-//         if(data){
-            
-//             var hbsObject = {user:data};
-//             res.render("partials/profile", hbsObject);
-            
-//         }
-//     });
-// });
-
 //create a user with name, username, password, image
-router.post("/", function(req, res){
+router.post("/create", function(req, res){
     //must input name, username, password, image
     //******maybe this could be refactored to a more concise format */
     if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){
