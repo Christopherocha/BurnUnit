@@ -114,28 +114,42 @@ router.post("/", (req, res) => {
 
 //create a user with name, username, password, image
 router.post("/create", function(req, res){
-    //must input name, username, password, image
-    //******maybe this could be refactored to a more concise format */
-    if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){
-        console.log("order was not properly completed");
-        res.redirect("/users")
-    }
-    else{
-        db.User.create({
-            "name": req.body.name,
-            "password": req.body.password,
-            "username": req.body.username,
-            "email": req.body.email,
-            "image": req.body.image,
-            "about": req.body.about,
-            "location": req.body.location
-        }).then( function(dbUser)
-        {
-            // console.log(dbUser.dataValues)
-            orm.userCreate(dbUser.dataValues);
+    
+    db.User.findOne({
+      where: {
+        email: req.body.email
+      },
+    }).then(function(result){
+        console.log(result);
+        //  If no user exists
+        if(result === null){
+            //must input name, username, password, image
+            /******maybe this could be refactored to a more concise format */
+            if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){
+                console.log("order was not properly completed");
+                res.redirect("/users")
+            }
+            else{
+                db.User.create({
+                    "name": req.body.name,
+                    "password": req.body.password,
+                    "username": req.body.username,
+                    "email": req.body.email,
+                    "image": req.body.image,
+                    "about": req.body.about,
+                    "location": req.body.location
+                }).then( function(dbUser)
+                {
+                    // console.log(dbUser.dataValues)
+                    orm.userCreate(dbUser.dataValues);
+                    res.redirect("/login");
+                });
+            }
+        } else {
+            console.log("account already exists")
             res.redirect("/login");
-        });
-    }
+        }
+    })
 });
 
 //update users
