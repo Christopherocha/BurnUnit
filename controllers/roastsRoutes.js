@@ -35,7 +35,7 @@ router.get("/:id", function(req, res){
     }).then(function(data){
         var hbsObject = {roast:data};
         console.log (hbsObject);
-        res.render("partials/roast/roast", hbsObject);
+        res.json(data);
     });
 });
 
@@ -117,11 +117,12 @@ router.put("winner/:id", function(req, res){
     db.Roast.update(
         {
             winner: req.body.winner,
-            quote: req.body.quote},
+            quote: req.body.quote,
+            quoteId: req.body.quoteId},
         {
             where: {id: req.params.id}
       }).then(function(dbRoast) {
-        res.redirect("/roasts");
+        res.json(dbRoast);
       });
 });
 

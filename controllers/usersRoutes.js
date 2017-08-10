@@ -67,6 +67,24 @@ router.get("/:username", function(req, res){
     });
 });
 
+router.get("/profile/:email/:id", function(req, res){
+     db.User.findOne({
+        where:
+        { email: req.params.email, id: req.params.id },
+        include: [db.Roast]
+    }).then(function (user) {
+        console.log("selected user: " + user);
+        if (!user) {
+            res.redirect('/login');
+        } else {
+            //check out using sessions to check the user status
+            //req.session.user = user.dataValues;
+            var hbsObject = { user: user };
+            res.render("partials/profile", hbsObject);
+        }
+    });
+});
+
 
 //get user by username and password
 //use for login
@@ -91,26 +109,6 @@ router.post("/", (req, res) => {
     });
 });
 
-
-// router.get("/login", function(req, res){
-//     console.log("req.body: ", req.body)
-//     db.User.findOne({
-//       where: {
-//         username: req.body.name,
-//         password:req.body.password
-//       },
-//       include: [db.Roast]
-//     }
-//     ).then(function(data){
-//         console.log(data);
-//         if(data){
-            
-//             var hbsObject = {user:data};
-//             res.render("partials/profile", hbsObject);
-            
-//         }
-//     });
-// });
 
 //create a user with name, username, password, image
 router.post("/create", function(req, res){
