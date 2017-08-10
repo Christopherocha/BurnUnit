@@ -5,12 +5,12 @@ var roast = ('../controllers/roastsRoutes');
 
 var firebaseQueries = {
     userCreate: function(user) {
-        console.log(user)//.name + "\n" + user.password)
         var idConvert = JSON.stringify(user.id);
+
         admin.auth().createUser({
             uid: idConvert,
-            email: user.name + '@gmail.com',
-            password: user.password
+            email: user.email,
+            password: user.password,
         })
         .then(function(user) {
             console.log("created account")
@@ -20,7 +20,8 @@ var firebaseQueries = {
         })
     },
     userLogin: function(email, pwd){
-        firebase.auth().signInWithEmailAndPassword(email, pwd).then(function(user){
+        firebase.auth().signInWithEmailAndPassword(email, pwd)
+        .then(function(user){
             console.log(user.uid);
         })
         .catch(function(error) {
@@ -28,6 +29,14 @@ var firebaseQueries = {
             var errorMessage = error.message;
 
             console.log(error);
+        });
+    },
+    sendPwdReset: function(email) {
+        admin.auth().sendPasswordResetEmail(email)
+        .then(function() {
+        // Email sent.
+        }).catch(function(error) {
+        // An error happened.
         });
     },
     createRoast: function(num) {
