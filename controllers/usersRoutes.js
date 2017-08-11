@@ -80,7 +80,7 @@ router.get("/profile/:email/:id", function(req, res){
             //check out using sessions to check the user status
             //req.session.user = user.dataValues;
             var hbsObject = { user: user };
-            res.render("partials/profile", hbsObject);
+            res.render("partials/user/profile", hbsObject);
         }
     });
 });
@@ -99,7 +99,7 @@ router.get("/startroast/:id", function(req, res){
             //check out using sessions to check the user status
             //req.session.user = user.dataValues;
             var hbsObject = { user: user };
-            res.render("partials/start", hbsObject);
+            res.render("partials/roast/start", hbsObject);
         }
     });
 });
@@ -145,7 +145,7 @@ router.post("/create", function(req, res){
             /******maybe this could be refactored to a more concise format */
             if(!req.body.name.length > 2 || !req.body.username.length > 2 || !req.body.password.length > 7 || !req.body.image.length > 0){
                 console.log("order was not properly completed");
-                res.redirect("/users")
+                res.redirect("/signup")
             }
             else{
                 db.User.create({
@@ -202,7 +202,7 @@ router.delete("/:id", function(req, res){
         id: req.params.id
       }
     }).then(function(dbUser) {
-      res.redirect("/users");
+      res.redirect("/");
     });
 });
 
