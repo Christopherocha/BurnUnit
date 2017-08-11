@@ -5,6 +5,9 @@ console.log(user);
 if(user){
     $("#profile-url").attr("href", "/users/"+user.profileUrl );
     $("#startroast-url").attr("href", "/users/"+user.startUrl );
+
+    console.log($("#profile-url").attr("href"))
+    console.log($("#startroast-url").attr("href"))
 }
 
 

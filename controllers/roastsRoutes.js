@@ -132,7 +132,8 @@ router.put("/winner/:id", function(req, res){
         {
             winner: req.body.winner,
             quote: req.body.quote,
-            quoteId: req.body.quoteId},
+            quoteId: req.body.quoteId,
+            status: req.body.status},
         {
             where: {id: req.params.id}
       }).then(function(dbRoast) {
@@ -140,6 +141,21 @@ router.put("/winner/:id", function(req, res){
         res.json(dbRoast);
       });
 });
+
+//update status 
+router.put("/status/:id", function(req, res){
+    console.log(req.body)
+    db.Roast.update(
+        {
+            status:req.body.status},
+        {
+            where: {id: req.params.id}
+      }).then(function(dbRoast) {
+          console.log(dbRoast);
+        res.json(dbRoast);
+      });
+});
+
 
 //delete roast by id
 router.delete("/:id", function(req, res){

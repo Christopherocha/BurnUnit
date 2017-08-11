@@ -22,6 +22,7 @@ $(document).ready(function () {
         var startUrl = "startroast/" + UserId;
         var profileUrl = "profile/" + email + "/" + UserId;
         var username = $("#username").attr("value");
+        console.log(username);
 
         user = {
             email: email,
@@ -50,9 +51,9 @@ $(document).ready(function () {
         if(data){
             console.log(data);
             var roastButtons = "";
-            var stillRoasting = [];
+            //var stillRoasting = [];
             for(i=0; i<data.length; i++){
-                if(data[i].stillRoasting === true){
+                if(data[i].status === "waiting"){
                     roastButtons += "<form class='create-update-form' action='/roasts/" + data[i].id + "' method='GET'>"+
                     "<button type='submit' class='btn waves-effect waves-light btn-large join-btn'"+
                     " id='" + data[i].id + "'><span>Join Roast " + data[i].id + "</span></button></form>";

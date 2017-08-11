@@ -32,16 +32,9 @@ var Roast = sequelize.define("Roast", {
         //      min: 1
         //  }
     },
-    participants:{
-         type: DataTypes.STRING,
-         allowNull: true,
-        //  validate:{
-        //      len:[1]
-        //  }
-    },
-    stillRoasting:{
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
+    status:{
+      type: DataTypes.STRING,
+      defaultValue: "playing"
     }
 
  });
@@ -58,6 +51,14 @@ var Roast = sequelize.define("Roast", {
     });
 
     Roast.hasMany(models.Quote, {
+        //as:"quotes",
+        onDelete: "CASCADE",
+        foreignKey: {
+        allowNull: false
+      }
+    })
+
+    Roast.hasMany(models.Participant, {
         //as:"quotes",
         onDelete: "CASCADE",
         foreignKey: {

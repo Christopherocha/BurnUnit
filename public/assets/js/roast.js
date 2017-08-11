@@ -1,13 +1,16 @@
 $(document).ready(function () {
+    
+    var status = "waiting";
+
 
     //load quotes on intervarl
     var nIntervId;
 
-    function updateQuotes() {
-        nIntervId = setInterval(getQuotes, 500);
+    function updateGame() {
+        nIntervId = setInterval(getStatus, 500);
     }
 
-    function stopTextColor() {
+    function endRoast() {
         clearInterval(nIntervId);
     }
 
@@ -55,11 +58,52 @@ $.get("/roasts/find/" + RoastId, function (data) {
     }
 });
 
-//get print the current quotes in the roast
- updateQuotes();   
+//get game status and post in display area
+ updateGame();   
  //getQuotes();
 }
 
+
+
+//get game status
+function getStatus(){
+    $.get("/roasts/find/" + RoastId, function (data) {
+        console.log(data);
+        status = data.status;
+
+        // if (data.Participants.length >= 4 && data.status === "waiting") {
+        //     $.ajax({
+        //         url: "/roasts/status/" + id,
+        //         type: "PUT",
+        //         data: {status:"playing"},
+        //         success: function (data) {
+        //             console.log(data);
+        //         }
+        //     })
+        // }
+
+    })
+
+    switch(status){
+        case "waiting" : $("#displayQuotes").html("<p>waiting on players</p>");
+            break;
+        case "playing" : getQuotes();
+            break;
+        case "over" : displayWinner();
+            break;
+        default: break;
+    }
+
+}
+
+function displayWinner() {
+    $.get("/roasts/find/" + RoastId, function (data) {
+        console.log(data);
+        $("#displayQuotes").html("<h1>Winner!</h1><p> User: " + data.winner + " Quote: " +
+        data.quote + "</p>");
+    })
+    endRoast();
+}
 
 //gets the quotes of the current roast and displays them in #displayQuotes <div>
 //I want to pass a function into getQuotes so I can use it with displayQuotes 
@@ -67,8 +111,14 @@ $.get("/roasts/find/" + RoastId, function (data) {
 function getQuotes() {
     $.get("/quotes/roast/" + RoastId, function (quotes) {
         if (quotes) {
-            console.log(quotes);
-            displayQuotes(quotes)
+            if(quotes.length > 4){
+                getWinner(quotes);
+            }
+
+            else{
+                console.log(quotes);
+                displayQuotes(quotes)
+            }
         }
     });
 }
@@ -136,7 +186,8 @@ $(document).on("click", ".winner", function(){
     var req = {
         winner: UserId,
         quote: quote,
-        quoteId: quoteId
+        quoteId: quoteId,
+        status: "over"
     }
 
     console.log(req.winner);
