@@ -2,13 +2,13 @@ var user = JSON.parse(sessionStorage.getItem('user'));
 
 console.log(user);
 
-if(user){
-    $("#profile-url").attr("href", "/users/"+user.profileUrl );
-    $("#startroast-url").attr("href", "/users/"+user.startUrl );
+// if(user){
+//     $("#profile-url").attr("href", "/users/"+user.profileUrl );
+//     $("#startroast-url").attr("href", "/users/"+user.startUrl );
 
-    console.log($("#profile-url").attr("href"))
-    console.log($("#startroast-url").attr("href"))
-}
+//     console.log($("#profile-url").attr("href"))
+//     console.log($("#startroast-url").attr("href"))
+// }
 
 
 //query user table for current user's information this can be done through routes

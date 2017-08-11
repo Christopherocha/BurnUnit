@@ -89,7 +89,7 @@ router.get("/profile/:email/:id", function(req, res){
 router.get("/startroast/:id", function(req, res){
      db.User.findOne({
         where:
-        { email: req.params.email, id: req.params.id },
+        { id: req.params.id },
         include: [db.Roast]
     }).then(function (user) {
         console.log("selected user: " + user);
