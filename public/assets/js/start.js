@@ -27,7 +27,9 @@ $(document).ready(function () {
             email: email,
             UserId: UserId,
             profileUrl: profileUrl,
-            startUrl: startUrl
+            startUrl: startUrl,
+            username: username
+
         }
 
         sessionStorage.setItem('user', JSON.stringify(user));
