@@ -79,8 +79,9 @@ $(document).ready(function () {
             var message = $("#textarea1").val();
 
             chatData.push({
-                user: UserId,
-                email: email,
+                user: user.UserId,
+                username: user.username,
+                email: user.email,
                 message: message
             });
 
@@ -99,8 +100,9 @@ $(document).ready(function () {
             var message = $("#textarea1").val();
 
             chatData.push({
-                user: UserId,
-                email: email,
+                user: user.UserId,
+                username: user.username,
+                email: user.email,
                 message: message
             });
 
@@ -110,14 +112,14 @@ $(document).ready(function () {
         }
     });
 
-
+    //if data push to database - log to DOM
     chatData.on('child_added', function (snapshot) {
         var msg = snapshot.val();
-        displayMsg(msg.user, msg.message);
+        displayMsg(msg.username, msg.message);
     });
 
-    function displayMsg(userId, message) {
-        $('<div />').text(message).prepend($('<em/>').text(userId + ': ')).appendTo('#chatMsg');
+    function displayMsg(username, message) {
+        $('<div />').text(message).prepend($('<em/>').text(username + ': ')).appendTo('#chatMsg');
 
         // $('#chatBox').scrollTop = $('#chatBox').scrollHeight;
         $("#chatMsg").stop().animate({ scrollTop: $("#chatMsg")[0].scrollHeight}, 1000);
