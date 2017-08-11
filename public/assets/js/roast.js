@@ -157,6 +157,8 @@ $(document).ready(function () {
         html += "<p class='quotes'> User: " + quotes[i].UserId + " Quote: " + quotes[i].quote + "</p>";
         }
 
+    }
+
     //displays buttons for the roastee to choose a winner from
     function getWinner(quotes){
         var displayQuotes = $("#displayQuotes");
@@ -168,6 +170,7 @@ $(document).ready(function () {
         "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
         " Quote: " + quotes[i].quote + "</a></p>";
         }
+    }
 
     $(document).on("click", "#burn", function () {
         var quote = $("#quote").val();
