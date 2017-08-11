@@ -172,20 +172,20 @@ router.post("/create", function(req, res){
 
 //update users
 //update name and password
-router.put("n/pw/:id", function(req, res){
-    db.User.update({
+router.put("/:id", function(req, res){
+    db.User.update(
         //can I user req.body here to update any parameters passed?
-        name: req.body.name, 
-        password:req.body.password},
+        req.body,
         {
             where: {id: req.params.id}
       }).then(function(dbUser) {
-        res.redirect("/users");
+          var hbsObject = {user:dbUser}
+        res.render("partials/user/profile", hbsObject);
       });
 });
 
 //update image
-router.put("image/:id", function(req, res){
+router.put("/image/:id", function(req, res){
     db.User.update({
         image: req.body.image},
         {

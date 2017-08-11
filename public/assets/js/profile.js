@@ -1,16 +1,3 @@
-var user = JSON.parse(sessionStorage.getItem('user'));
-
-console.log(user);
-
-// if(user){
-//     $("#profile-url").attr("href", "/users/"+user.profileUrl );
-//     $("#startroast-url").attr("href", "/users/"+user.startUrl );
-
-//     console.log($("#profile-url").attr("href"))
-//     console.log($("#startroast-url").attr("href"))
-// }
-
-
 //query user table for current user's information this can be done through routes
 //this the route should res.json the profile page with the user object
 
@@ -20,3 +7,31 @@ console.log(user);
 //get the number of roasts that the user has initiated
 
 //use QuoteId from roasts to query the quote table and get the winnig quotes
+
+var user = JSON.parse(sessionStorage.getItem('user'));
+
+console.log(user);
+
+
+$(document).ready( function(){
+    $('.modal').modal();
+
+
+    $(document).on("click", ".edit-info", function(){
+        var name = $("#newname").val()
+        var username = $("#newusername").val()
+        var email = $("#newemail").val()
+        $.ajax({
+            url: "/users/" + user.UserId,
+            type: "PUT",
+            data: { 
+                name: name,
+                username: username,
+                email: email },
+            success: function (data) {
+                
+ 
+            }
+        })
+    })
+})
