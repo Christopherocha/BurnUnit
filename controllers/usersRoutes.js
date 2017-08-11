@@ -124,7 +124,7 @@ router.post("/", (req, res) => {
             //req.session.user = user.dataValues;
             orm.userLogin(email, password);
             var hbsObject = { user: user };
-            res.render("partials/start", hbsObject);
+            res.render("partials/roast/start", hbsObject);
         }
     });
 });
