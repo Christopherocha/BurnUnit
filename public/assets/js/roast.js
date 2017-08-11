@@ -78,7 +78,7 @@ function displayQuotes(quotes){
     var displayQuotes = $("#displayQuotes");
     var html = "";
     for(i=0; i<quotes.length; i++){
-    html += "<p> user: " + quotes[i].UserId + " quote: " + quotes[i].quote + "</p>";
+    html += "<p class='quotes'> User: " + quotes[i].UserId + " Quote: " + quotes[i].quote + "</p>";
     }
 
     displayQuotes.html(html);
@@ -89,10 +89,11 @@ function getWinner(quotes){
     var displayQuotes = $("#displayQuotes");
     var html = "";
     for(i=0; i<quotes.length; i++){
-    html += "<p><a class='winner' id='" + quotes[i].RoastId +
+    // moved the class to <p> instead of <a>
+    html += "<p class='winner'><a id='" + quotes[i].RoastId +
      "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
-     "' value='" + quotes[i].quote + "'> user: " + quotes[i].UserId + 
-     " quote: " + quotes[i].quote + "</a></p>";
+     "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
+     " Quote: " + quotes[i].quote + "</a></p>";
     }
 
     displayQuotes.html(html);
