@@ -22,14 +22,15 @@ $(document).ready(function () {
         var startUrl = "startroast/" + UserId;
         var profileUrl = "profile/" + email + "/" + UserId;
         var username = $("#username").attr("value");
-        console.log(username);
+
 
         user = {
             email: email,
             UserId: UserId,
             profileUrl: profileUrl,
             startUrl: startUrl,
-            username: username
+            username: username,
+            signedIn: true
 
         }
 
@@ -41,6 +42,8 @@ $(document).ready(function () {
     }
 
     else{
+        user.signedIn = true;
+        sessionStorage.setItem('user', JSON.stringify(user));
         console.log(user)
         $("#profile-url").attr("href", user.profileUrl );
         $("#startroast-url").attr("href", user.startUrl );

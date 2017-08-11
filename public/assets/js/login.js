@@ -1,4 +1,11 @@
- 
+var user = JSON.parse(sessionStorage.getItem('user')); 
+
+if(user){
+    user.signedIn = false;
+    sessionStorage.setItem('user', JSON.stringify(user));
+    console.log(user)
+}
+
 
 //when login submit button is clicked check to see that username and password are entered
 //if user entered username and password, check to see if they are in the data base
