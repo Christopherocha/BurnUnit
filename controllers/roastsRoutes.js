@@ -44,7 +44,7 @@ router.get("/find/:id", function(req, res){
       where: {
         id: req.params.id
       },
-      include: [db.User]
+      include: [db.User, db.Participant]
     }).then(function(data){
         var hbsObject = {roast:data};
         console.log (hbsObject);
@@ -111,6 +111,15 @@ router.post("/:id", function(req, res){
 });
 
 //update roasts
+router.post("/join/:id/:username", function(req, res){
+    db.Participant.create({
+        RoastId: req.params.id,
+        username: req.params.username
+    }).then(function(dbPart){
+        res.json(dbPart)
+
+    })
+} )
 
 //update roastee when game is a max capacity or is force started
 router.put("/roastee/:id", function(req, res){
@@ -147,6 +156,7 @@ router.put("/status/:id", function(req, res){
     console.log(req.body)
     db.Roast.update(
         {
+            roastee:req.body.roastee,
             status:req.body.status},
         {
             where: {id: req.params.id}

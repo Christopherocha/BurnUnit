@@ -1,6 +1,38 @@
 $(document).ready(function () {
+
+    //load quotes on intervarl
+    var nIntervId;
+
+    function updateGame() {
+        nIntervId = setInterval(getStatus, 500);
+    }
+
+    function endRoast() {
+        clearInterval(nIntervId);
+    }
+
+    //updateQuotes();
+
+
+    //check to see that user is stored
+    console.log(JSON.parse(sessionStorage.getItem('user')));
+
+    //get user from local storage and save to global user object
+    var user = JSON.parse(sessionStorage.getItem('user'));
+
+    console.log(user);
+
+    if (user) {
+        $("#profile-url").attr("href", user.profileUrl);
+        $("#startroast-url").attr("href", user.startUrl);
+    }
+
     
+
+    var players = [];
     var status = "waiting";
+    var numPlayers = 0;
+    var roastee;
 
 
     var config = {
@@ -52,32 +84,6 @@ $(document).ready(function () {
         // $('#chatBox').scrollTop = $('#chatBox').scrollHeight;
         $("#chatMsg").stop().animate({ scrollTop: $("#chatMsg")[0].scrollHeight}, 1000);
     };
-    //load quotes on intervarl
-    var nIntervId;
-
-    function updateGame() {
-        nIntervId = setInterval(getStatus, 500);
-    }
-
-    function endRoast() {
-        clearInterval(nIntervId);
-    }
-
-    //updateQuotes();
-
-
-    //check to see that user is stored
-    console.log(JSON.parse(sessionStorage.getItem('user')));
-
-    //get user from local storage and save to global user object
-    var user = JSON.parse(sessionStorage.getItem('user'));
-
-    console.log(user);
-
-    if (user) {
-        $("#profile-url").attr("href", user.profileUrl);
-        $("#startroast-url").attr("href", user.startUrl);
-    }
 
     //get the roast id of the roast that the page was rendered with
     var RoastId = $("#RoastId").val();
@@ -90,10 +96,19 @@ $(document).ready(function () {
     };
 
     if (RoastId) {
+        
         //get the roast info
         //this might not be needed once things are moving smoothly
         $.get("/roasts/find/" + RoastId, function (data) {
             console.log(data)
+            if(data.Participants){
+                if(!data.Participants.includes(user.username)){
+                    $.post("/roasts/join/"+ RoastId +"/"+user.username, function(data){
+                        console.log(data);
+                    })
+                }
+            }
+
             if (!data.creator) {
                 roast.creator = data.UserId
                 localStorage.setItem('currentRoast', JSON.stringify(roast));
@@ -131,7 +146,8 @@ function getStatus(){
     $.get("/roasts/find/" + RoastId, function (data) {
         console.log(data);
         status = data.status;
-
+        numPlayers = data.Participants.length;
+        players = data.Participants; 
         // if (data.Participants.length >= 4 && data.status === "waiting") {
         //     $.ajax({
         //         url: "/roasts/status/" + id,
@@ -147,7 +163,7 @@ function getStatus(){
 
     console.log(status)
     switch(status){
-        case "waiting" : $("#displayQuotes").html("<p>waiting on players</p>");
+        case "waiting" : wait();
             break;
         case "playing" : getQuotes();
             break;
@@ -156,6 +172,31 @@ function getStatus(){
         default: break;
     }
 
+}
+
+function wait(){
+    $("#displayQuotes").html("<p>waiting on players</p>");
+    //numbers of participants required. this can be changed to make a larger game
+    if (numPlayers > 1) {
+        var randomNum = Math.floor(Math.random()*numPlayers);
+        console.log(randomNum);
+        console.log(players)
+        roastee = players[randomNum].username;
+        console.log(roastee);
+        if(user.username === roastee){
+            $("#quote").attr("class", "hidden");
+        }
+        $.ajax({
+            url: "/roasts/status/" + RoastId,
+            type: "PUT",
+            data: { 
+                roastee: roastee,
+                status: "playing" },
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    }
 }
 
 function displayWinner() {
@@ -173,10 +214,12 @@ function displayWinner() {
 function getQuotes() {
     $.get("/quotes/roast/" + RoastId, function (quotes) {
         if (quotes) {
-            if(quotes.length > 4){
+            if(quotes.length > 4 && user.username === roastee){
                 getWinner(quotes);
             }
-
+            else if(quotes.length > 4){
+                $("#quote").attr("class", "hidden");
+            }
             else{
                 console.log(quotes);
                 displayQuotes(quotes)

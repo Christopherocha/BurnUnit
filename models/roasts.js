@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 
 var Roast = sequelize.define("Roast", {
     roastee:{
-         type: DataTypes.INTEGER,
+         type: DataTypes.STRING,
          allowNull: true,
         //  validate:{
         //     min: 1         
@@ -34,9 +34,8 @@ var Roast = sequelize.define("Roast", {
     },
     status:{
       type: DataTypes.STRING,
-      defaultValue: "playing"
+      defaultValue: "waiting"
     }
-
  });
 
    Roast.associate = function(models) {

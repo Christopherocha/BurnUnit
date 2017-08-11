@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     var Participant = sequelize.define("Participant", {
     username:{
          type: DataTypes.STRING,
-         allowNull: false,
+         allowNull: true,
          validate:{
              len:[2]
          }
@@ -23,13 +23,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }      
     });
-
-    Participant.belongsTo(models.User, {
-        onDelete: "cascade",
-        foreignKey: {
-            allowNull: false
-        }         
-    })
 
 
   };
