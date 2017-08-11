@@ -243,22 +243,6 @@ function displayQuotes(quotes) {
 
     })
 
-<<<<<<< HEAD
-})
-
-//if the roastee
-$(document).on("click", ".winner", function(){
-    var id = this.id
-    var UserId = $(this).attr("user");
-    var quote = $(this).attr("value");
-    var quoteId = $(this).attr("quoteId")
-    var req = {
-        winner: UserId,
-        quote: quote,
-        quoteId: quoteId,
-        status: "over"
-    }
-=======
     //if the roastee
     $(document).on("click", ".winner", function () {
         var id = this.id
@@ -270,7 +254,6 @@ $(document).on("click", ".winner", function(){
             quote: quote,
             quoteId: quoteId
         }
->>>>>>> a76c8bb3a38abbfd0f2d88439cfd361da7154b9c
 
         console.log(req.winner);
 
