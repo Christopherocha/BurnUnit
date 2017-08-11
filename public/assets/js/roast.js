@@ -108,7 +108,7 @@ $(document).ready(function () {
         });
 
         //get print the current quotes in the roast
-        updateQuotes();
+        updateGame();
         //getQuotes();
     }
 
@@ -124,13 +124,6 @@ $(document).ready(function () {
             }
         });
     }
-
-
-//get game status and post in display area
- updateGame();   
- //getQuotes();
-
-
 
 
 //get game status
@@ -152,6 +145,7 @@ function getStatus(){
 
     })
 
+    console.log(status)
     switch(status){
         case "waiting" : $("#displayQuotes").html("<p>waiting on players</p>");
             break;
@@ -199,7 +193,9 @@ function displayQuotes(quotes) {
         html += "<p class='quotes'> User: " + quotes[i].UserId + " Quote: " + quotes[i].quote + "</p>";
     }
 
-    }
+    displayQuotes.html(html);
+
+}
 
     //displays buttons for the roastee to choose a winner from
     function getWinner(quotes){
@@ -207,11 +203,13 @@ function displayQuotes(quotes) {
         var html = "";
         for(i=0; i<quotes.length; i++){
         // moved the class to <p> instead of <a>
-        html += "<p class='winner'><a id='" + quotes[i].RoastId +
+        html += "<p class='winner'><a class='sel-winner' id='" + quotes[i].RoastId +
         "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
         "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
         " Quote: " + quotes[i].quote + "</a></p>";
         }
+
+        displayQuotes.html(html);
     }
 
     $(document).on("click", "#burn", function () {
@@ -244,7 +242,7 @@ function displayQuotes(quotes) {
     })
 
     //if the roastee
-    $(document).on("click", ".winner", function () {
+    $(document).on("click", ".sel-winner", function () {
         var id = this.id
         var UserId = $(this).attr("user");
         var quote = $(this).attr("value");
@@ -252,7 +250,8 @@ function displayQuotes(quotes) {
         var req = {
             winner: UserId,
             quote: quote,
-            quoteId: quoteId
+            quoteId: quoteId,
+            status: "over"
         }
 
         console.log(req.winner);

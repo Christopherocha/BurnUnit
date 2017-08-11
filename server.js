@@ -44,7 +44,7 @@ app.use("/quotes", quotesRoutes);
 
 
 //removed force : true in .sync({force:true}) to keep the information inserted in the table
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force:true}).then(function() {
   app.listen(port, function() {
     console.log("App listening on PORT " + port);
   });
