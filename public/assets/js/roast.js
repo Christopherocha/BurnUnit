@@ -4,7 +4,7 @@ $(document).ready(function () {
     var nIntervId;
 
     function updateGame() {
-        nIntervId = setInterval(getStatus, 500);
+        nIntervId = setInterval(getStatus, 1500);
     }
 
     function endRoast() {
@@ -148,16 +148,6 @@ function getStatus(){
         status = data.status;
         numPlayers = data.Participants.length;
         players = data.Participants; 
-        // if (data.Participants.length >= 4 && data.status === "waiting") {
-        //     $.ajax({
-        //         url: "/roasts/status/" + id,
-        //         type: "PUT",
-        //         data: {status:"playing"},
-        //         success: function (data) {
-        //             console.log(data);
-        //         }
-        //     })
-        // }
 
     })
 
@@ -186,6 +176,9 @@ function wait(){
         if(user.username === roastee){
             $("#quote").attr("class", "hidden");
         }
+        endRoast();
+        timer.start(updateGame);
+        //updateGame();
         $.ajax({
             url: "/roasts/status/" + RoastId,
             type: "PUT",
@@ -248,7 +241,7 @@ function displayQuotes(quotes) {
         // moved the class to <p> instead of <a>
         html += "<p class='winner'><a class='sel-winner' id='" + quotes[i].RoastId +
         "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
-        "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
+        "' value='" + quotes[i].quote + "'> User: " + quotes[i].username + 
         " Quote: " + quotes[i].quote + "</a></p>";
         }
 
