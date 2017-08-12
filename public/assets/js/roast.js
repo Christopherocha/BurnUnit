@@ -248,11 +248,12 @@ function displayQuotes(quotes) {
     function getWinner(quotes){
         var displayQuotes = $("#displayQuotes");
         var html = "";
+        console.log(quotes);
         for(i=0; i<quotes.length; i++){
         // moved the class to <p> instead of <a>
         html += "<p class='winner'><a class='sel-winner' id='" + quotes[i].RoastId +
         "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
-        "' value='" + quotes[i].quote + "'> User: " + quotes[i].User.username + 
+        "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
         " Quote: " + quotes[i].quote + "</a></p>";
         }
 

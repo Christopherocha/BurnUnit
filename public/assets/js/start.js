@@ -63,15 +63,14 @@ $(document).ready(function () {
                 }
             }
 
-            $("#current-roasts").html(roastButtons);
+            if(roastButtons){
+                $("#current-roasts").html(roastButtons);
+                $("#create-roasts").attr("class", "hidden");
+            }
         }
 
     })
 
-
-    $(document).on("click", "#create-roast", function(){
-
-    })
 
 
     $("#chatSubmit").click(function () {

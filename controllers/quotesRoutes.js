@@ -35,7 +35,7 @@ router.get("/roast/:id", function(req, res){
       where: {
           RoastId: req.params.id
       },
-      include : [db.Roast]
+      include : [db.Roast, db.User]
     }).then(function(data){
         //var hbsObject = {quotes:data};
         res.json(data);
