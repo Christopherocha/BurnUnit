@@ -4,6 +4,7 @@ html {
     height: 100% !important;
 }
 
+
 body {
     background: #efebe9;
     background-image: url("../images/fire.png");
@@ -11,7 +12,7 @@ body {
     min-height: 100% !important;
     margin: auto;
     background-attachment: fixed;
-    font-weight: 900;
+
 }
 
 h1 {
@@ -165,4 +166,93 @@ p {
     border-color: #000;
     box-shadow: 2px 2px 4px grey;
     background-color: yellow;
+}
+
+#chatBox {
+    border: 2px solid orange;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+.btn-large{
+    background-color: orange;
+}
+
+.card{
+    border: 2px solid orange;
+    margin-top: 10px;
+    border-radius: 15px;
+
+}
+
+.input-field label{
+    color: #4a4a4a;
+    font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+
+}
+
+label.active{
+    color: orange;
+}
+
+#textarea1{
+    border-bottom: 1px solid orange;
+}
+
+#quote{
+    border-bottom: 1px solid orange;
+}
+
+.btn{
+    background-color: orange;
+}
+
+em{
+    color: orange;
+    font-family: "Lucida Console", Monaco, monospace;
+
+}
+
+#textarea1:focus {
+  border-bottom: 1px solid #ff6f00;
+  box-shadow: 0 1px 0 0 #ff6f00;
+}
+
+#textarea1:focus + label {
+  color: #ff6f00;
+}
+
+#quote:focus {
+  border-bottom: 1px solid #ff6f00;
+  box-shadow: 0 1px 0 0 #ff6f00;
+}
+
+#quote:focus + label {
+  color: #ff6f00;
+}
+
+.btn {
+  overflow: hidden;
+}
+.btn:hover:before {
+  opacity:1;
+}
+
+.btn:before {
+    content: '';
+    opacity: 0;
+    background-color: #ff6f00;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: opacity .2s;
+    z-index: -1;
+}
+
+h1{
+    border-bottom: 2px solid orange;
 }
