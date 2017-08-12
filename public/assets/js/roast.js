@@ -4,7 +4,7 @@ $(document).ready(function () {
     var nIntervId;
 
     function updateGame() {
-        nIntervId = setInterval(getStatus, 1500);
+        nIntervId = setInterval(getStatus, 500);
     }
 
     function endRoast() {
