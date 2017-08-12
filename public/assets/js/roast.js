@@ -252,7 +252,7 @@ function displayQuotes(quotes) {
         console.log(quotes);
         for(i=0; i<quotes.length; i++){
         // moved the class to <p> instead of <a>
-        html += "<p class='winner'><a class='winner sel-winner' id='" + quotes[i].RoastId +
+        html += "<p class='winner'><a class='sel-winner' id='" + quotes[i].RoastId +
         "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
         "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
         " Quote: " + quotes[i].quote + "</a></p>";
