@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Mj52camu",
+    "password": "",
     "database": "burn_unit",
     "host": "127.0.0.1",
     "dialect": "mysql"
