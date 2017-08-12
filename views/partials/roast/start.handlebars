@@ -38,9 +38,12 @@
         <div class="row">
             <div class="col m12 center-align" style="padding: 50px;">
                 <h4>Ready?</h4>
-                <form class="create-update-form " action="/roasts/{{this.id}}" method="POST">
-                    <button type="submit" class="btn waves-effect waves-light btn-large"><span>Get 'em!</span></button>
-                </form>
+                <div id="create-roasts">
+                    <form class="create-update-form " action="/roasts/{{this.id}}" method="POST">
+                        <button type="submit" class="btn waves-effect waves-light btn-large"><span>Get 'em!</span></button>
+                    </form>
+                </div>
+
                 <div id="current-roasts"></div>
                 </div>
                 </div>

@@ -219,10 +219,10 @@ function displayWinner() {
 function getQuotes() {
     $.get("/quotes/roast/" + RoastId, function (quotes) {
         if (quotes) {
-            if(quotes.length > 4 && user.username === roastee){
+            if(quotes.length >= 5 && user.username === roastee){
                 getWinner(quotes);
             }
-            else if(quotes.length > 4){
+            else if(quotes.length >= 5){
                 $("#quote").attr("class", "hidden");
             }
             else{
@@ -249,11 +249,12 @@ function displayQuotes(quotes) {
     function getWinner(quotes){
         var displayQuotes = $("#displayQuotes");
         var html = "";
+        console.log(quotes);
         for(i=0; i<quotes.length; i++){
         // moved the class to <p> instead of <a>
         html += "<p class='winner'><a class='sel-winner' id='" + quotes[i].RoastId +
         "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
-        "' value='" + quotes[i].quote + "'> User: " + quotes[i].User.username + 
+        "' value='" + quotes[i].quote + "'> User: " + quotes[i].UserId + 
         " Quote: " + quotes[i].quote + "</a></p>";
         }
 
