@@ -34,9 +34,7 @@ module.exports = function(sequelize, DataTypes) {
     image:{
          type: DataTypes.STRING,
          allowNull: false,
-         validate:{
-             len:[1]
-         }
+
     },
     location:{
          type: DataTypes.STRING,

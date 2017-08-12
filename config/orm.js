@@ -47,31 +47,5 @@ var firebaseQueries = {
         var postKey = database.ref("/roasts").push(postData).key;
     }
 }
-//  On value DB change command to feed content to DOM
-// var ref = firebase.database().ref('/roasts');
-// ref.on("value", function(snapshot) {
-//     console.log(snapshot.val());
-// });
-// End value change update
+
 module.exports = firebaseQueries;
-
-//  Create account logic
-function validatePwd (pwd1, pwd2) {
-    if (pwd1 !== pwd2) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-// $("#pwd2").on("blur", function() {
-//     var pwd1 = $("#pwd1").text();
-//     var pwd2 = $("#pwd2").text();
-    
-//     if (validatePwd(pwd1, pwd2)){
-//         $("#createAcct").prop("disabled", false);
-//     }
-// })
-//  End create logic
-
-

@@ -252,7 +252,7 @@ function displayQuotes(quotes) {
         // moved the class to <p> instead of <a>
         html += "<p class='winner'><a class='sel-winner' id='" + quotes[i].RoastId +
         "' user='" + quotes[i].UserId + "' quoteId='" + quotes[i].id + 
-        "' value='" + quotes[i].quote + "'> User: " + quotes[i].username + 
+        "' value='" + quotes[i].quote + "'> User: " + quotes[i].User.username + 
         " Quote: " + quotes[i].quote + "</a></p>";
         }
 
