@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "cabbage",
-=======
     "password": "",
->>>>>>> d43767296aa04c951f496be062ba2ff1b85d6287
     "database": "burn_unit",
     "host": "127.0.0.1",
     "dialect": "mysql"

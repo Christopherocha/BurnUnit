@@ -146,14 +146,14 @@ p {
     border-radius: 10px;
     padding: 0px 5px;
     margin: 8px;
-    color: #000;
+    color: #000 !important;
     background-color: whitesmoke;
     box-shadow: 2px 2px 4px lightslategray;
 }
 /* Change to winner for winner button */
 .winner:hover {
     color: #000;
-    box-shadow: 2px 2px 6px #000;
+    box-shadow: 2px 2px 6px #000 !important;
     background-image: url("../images/winFire.png");
     background-position: 100%;
     cursor: pointer;
@@ -166,7 +166,7 @@ p {
 
 .winner:active {
     border-color: #000;
-    color: #000;
+    color: #000 !important;
     box-shadow: 2px 2px 4px grey;
     background-color: yellow;
 }
