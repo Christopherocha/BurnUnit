@@ -199,9 +199,21 @@ function wait(){
                 status: "playing" },
             success: function (data) {
                 console.log(data);
+                diplayRoastee();
             }
         })
     }
+}
+
+
+function diplayRoastee(){
+    console.log("show roastee!")
+    $.get("/users/username/"+roastee, function(data){
+        console.log("roastee"+JSON.stringify(data));
+        $("#uName").html("<h4>"+data.username+"</h4>");
+        $("#uBio").html(data.about);
+        $("#uImg").attr("src", data.image);
+    })
 }
 
 function displayWinner() {

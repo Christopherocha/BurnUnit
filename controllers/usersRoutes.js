@@ -40,7 +40,7 @@ router.get("/:id", function(req, res){
 });
 
 //get user by name
-router.get("/:name", function(req, res){
+router.get("/name/:name", function(req, res){
     db.User.findOne({
       where: {
         name: req.params.name
@@ -48,13 +48,12 @@ router.get("/:name", function(req, res){
       include: [db.Roast]
     }
     ).then(function(data){
-        var hbsObject = {users:data};
-        res.json(hbsObject);
+        res.json(data);
     });
 });
 
 //get user by username
-router.get("/:username", function(req, res){
+router.get("/username/:username", function(req, res){
     db.User.findOne({
       where: {
         username: req.params.username
@@ -62,8 +61,7 @@ router.get("/:username", function(req, res){
       include: [db.Roast]
     }
     ).then(function(data){
-        var hbsObject = {users:data};
-        res.json(hbsObject);
+        res.json(data);
     });
 });
 
