@@ -224,6 +224,7 @@ function getQuotes() {
             }
             else if(quotes.length >= 5){
                 $("#quote").attr("class", "hidden");
+                displayQuotes(quotes)
             }
             else{
                 console.log(quotes);
