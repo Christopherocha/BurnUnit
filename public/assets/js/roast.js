@@ -31,7 +31,7 @@ $(document).ready(function () {
                     +'<li><a href="/users/profile/'+user.email+'/'+user.UserId+'">Profile</a></li>'
                     +'<li><a href="/users/startroast/'+user.UserId+'">Roast!</a></li>'
                     +'<li><a href="/login">Sign Out</a></li></ul>'
-                +'<ul class="side-nav" id="mobile-demo">'
+                    +'<ul class="side-nav" id="mobile-demo">'
                     +'<li><a href="/users/profile/{{this.email}}/{{this.id}}">Profile</a></li>'
                     +'<li><a href="/users/startroast/{{this.id}}">Roast!</a></li>'
                     +'<li><a href="/login">Sign Out</a></li></ul></div>'
@@ -182,7 +182,8 @@ function wait(){
         var randomNum = Math.floor(Math.random()*numPlayers);
         console.log(randomNum);
         console.log(players)
-        roastee = players[randomNum].username;
+        if (!roastee){
+        roastee = players[randomNum].username;}
         console.log(roastee);
         if(user.username === roastee){
             $("#burn").attr("class", "hidden");
