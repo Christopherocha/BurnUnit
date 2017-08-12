@@ -180,7 +180,7 @@ router.put("/:id", function(req, res){
             where: {id: req.params.id}
       }).then(function(dbUser) {
           var hbsObject = {user:dbUser}
-        res.render("partials/user/profile", hbsObject);
+        res.json(dbUser);
       });
 });
 

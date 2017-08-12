@@ -18,19 +18,21 @@ $(document).ready( function(){
 
 
     $(document).on("click", ".edit-info", function(){
-        var name = $("#newname").val()
-        var username = $("#newusername").val()
-        var email = $("#newemail").val()
+        user.name = $("#newname").val();
+        user.username = $("#newusername").val();
+        user.email = $("#newemail").val();
+
+        sessionStorage.setItem('user', JSON.stringify(user));
         $.ajax({
             url: "/users/" + user.UserId,
             type: "PUT",
             data: { 
-                name: name,
-                username: username,
-                email: email },
-            success: function (data) {
-                
- 
+                name: user.name,
+                username: user.username,
+                email: user.email },
+            success: function(){
+                $("#username").val(user.username);
+                $("#email").val(user.email);
             }
         })
     })
