@@ -185,7 +185,7 @@ function wait(){
         roastee = players[randomNum].username;
         console.log(roastee);
         if(user.username === roastee){
-            $("#quote").attr("class", "hidden");
+            $("#burn").attr("class", "hidden");
         }
         endRoast();
         timer.start(updateGame);

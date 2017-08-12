@@ -256,3 +256,7 @@ em{
 h1{
     border-bottom: 2px solid orange;
 }
+
+.card .card-image img{
+    top: 17px;
+}
