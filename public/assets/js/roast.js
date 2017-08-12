@@ -176,7 +176,7 @@ function getStatus(){
 }
 
 function wait(){
-    $("#displayQuotes").html("<p>waiting on players</p>");
+    $("#displayQuotes").html("<p>Waiting on players...</p>");
     //numbers of participants required. this can be changed to make a larger game
     if (numPlayers > 2) {
         var randomNum = Math.floor(Math.random()*numPlayers);
