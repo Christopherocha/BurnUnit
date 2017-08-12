@@ -142,15 +142,17 @@ p {
 .winner {
     border-width: 4px;
     border-style: outset;
-    border-color: red;
+    border-color: #ff9800;
     border-radius: 10px;
     padding: 0px 5px;
     margin: 8px;
+    color: #000;
     background-color: whitesmoke;
     box-shadow: 2px 2px 4px lightslategray;
 }
 /* Change to winner for winner button */
 .winner:hover {
+    color: #000;
     box-shadow: 2px 2px 6px #000;
     background-image: url("../images/winFire.png");
     background-position: 100%;
@@ -164,6 +166,7 @@ p {
 
 .winner:active {
     border-color: #000;
+    color: #000;
     box-shadow: 2px 2px 4px grey;
     background-color: yellow;
 }
@@ -182,7 +185,6 @@ p {
     border: 2px solid orange;
     margin-top: 10px;
     border-radius: 15px;
-
 }
 
 .input-field label{
@@ -195,6 +197,15 @@ p {
 
 label.active{
     color: orange;
+}
+
+input {
+    border-bottom: 1px solid orange !important;
+}
+
+input:focus {
+    border-bottom: 1px solid #ff6f00 !important;
+    box-shadow: 0 1px 0 0 #ff6f00;
 }
 
 #textarea1{
@@ -233,9 +244,18 @@ em{
   color: #ff6f00;
 }
 
+button:after {
+    background-color: #8C420A !important;
+}
+
+.waves-effect:active {
+    background-color: #8C420A !important;
+}
+
 .btn {
   overflow: hidden;
 }
+
 .btn:hover:before {
   opacity:1;
 }
@@ -251,6 +271,10 @@ em{
     top: 0;
     transition: opacity .2s;
     z-index: -1;
+}
+
+.btn:active {
+    background-color: #8C420A !important;
 }
 
 h1{
