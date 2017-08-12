@@ -185,7 +185,7 @@ function wait(){
         roastee = players[randomNum].username;
         console.log(roastee);
         if(user.username === roastee){
-            $("#quote").attr("class", "hidden");
+            $("#burn").attr("class", "hidden");
         }
         endRoast();
         timer.start(updateGame);
@@ -218,10 +218,10 @@ function displayWinner() {
 function getQuotes() {
     $.get("/quotes/roast/" + RoastId, function (quotes) {
         if (quotes) {
-            if(quotes.length > 4 && user.username === roastee){
+            if(quotes.length >= 5 && user.username === roastee){
                 getWinner(quotes);
             }
-            else if(quotes.length > 4){
+            else if(quotes.length >= 5){
                 $("#quote").attr("class", "hidden");
             }
             else{
