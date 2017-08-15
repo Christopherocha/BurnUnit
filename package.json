@@ -24,7 +24,8 @@
     "firebase-admin": "^5.1.0",
     "method-override": "^2.3.9",
     "mysql2": "^1.4.0",
-    "sequelize": "^4.4.2"
+    "sequelize": "^4.4.2",
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {
     "browserify": "^14.4.0",

@@ -26,6 +26,14 @@ var port = process.env.PORT || 8080;
 
 var app = express();
 
+var server = require("http").Server(app);
+var io = require("socket.io")(server);
+
+var handleClient = function (socket) {
+    // we've got a client connection
+    socket.emit("tweet", {user: "nodesource", text: "Hello, world!"});
+};
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(override("_method"));
@@ -50,3 +58,4 @@ db.sequelize.sync().then(function() {
   });
 });
 
+io.on("connection", handleClient);
