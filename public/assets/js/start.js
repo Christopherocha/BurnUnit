@@ -71,48 +71,57 @@ $(document).ready(function () {
 
     })
 
-
-
-    $("#chatSubmit").click(function () {
-        event.preventDefault();
-
-        if ($("#textarea1").val() !== "") {
-
-            var message = $("#textarea1").val();
-
-            chatData.push({
-                user: user.UserId,
-                username: user.username,
-                email: user.email,
-                message: message
-            });
-
-            $("#textarea1").val("");
-
-            // $("#chatMsg").append("<div>" + UserId + ": " + message + "</div>");
-
-        }
+    var socket = io();
+    $('.chatForm').on('submit', function(e){
+      event.preventDefault();
+      socket.emit('chat message', $('#textarea1').val());
+      $('#textarea1').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#chatMsg').append($('<li>').text(msg));
     });
 
-    $("#chatSubmit").keypress(function (e) {
-        event.preventDefault();
+    // $("#chatSubmit").click(function () {
+    //     event.preventDefault();
 
-        if (e.which === 13 && $("#textarea1").val() !== "") {
+    //     if ($("#textarea1").val() !== "") {
 
-            var message = $("#textarea1").val();
+    //         var message = $("#textarea1").val();
 
-            chatData.push({
-                user: user.UserId,
-                username: user.username,
-                email: user.email,
-                message: message
-            });
+    //         chatData.push({
+    //             user: user.UserId,
+    //             username: user.username,
+    //             email: user.email,
+    //             message: message
+    //         });
 
-            $("#textarea1").val("");
+    //         $("#textarea1").val("");
 
-            // $("#chatMsg").append("<div>" + UserId + ": " + message + "</div>");
-        }
-    });
+    //         // $("#chatMsg").append("<div>" + UserId + ": " + message + "</div>");
+
+    //     }
+    // });
+
+    // $("#chatSubmit").keypress(function (e) {
+    //     event.preventDefault();
+
+    //     if (e.which === 13 && $("#textarea1").val() !== "") {
+
+    //         var message = $("#textarea1").val();
+
+    //         chatData.push({
+    //             user: user.UserId,
+    //             username: user.username,
+    //             email: user.email,
+    //             message: message
+    //         });
+
+    //         $("#textarea1").val("");
+
+    //         // $("#chatMsg").append("<div>" + UserId + ": " + message + "</div>");
+    //     }
+    // });
 
     //if data push to database - log to DOM
     chatData.on('child_added', function (snapshot) {

@@ -31,7 +31,7 @@ var io = require("socket.io")(server);
 
 var handleClient = function (socket) {
     // we've got a client connection
-    socket.emit("tweet", {user: "nodesource", text: "Hello, world!"});
+    socket.emit("chat message", {user: "nodesource", text: "Hello, world!"});
 };
 
 app.use(express.static("public"));
@@ -53,9 +53,20 @@ app.use("/quotes", quotesRoutes);
 
 //removed force : true in .sync({force:true}) to keep the information inserted in the table
 db.sequelize.sync().then(function() {
-  app.listen(port, function() {
+  server.listen(port, function() {
     console.log("App listening on PORT " + port);
   });
 });
 
-io.on("connection", handleClient);
+io.on('connection', function (socket) {
+  io.emit('this', { will: 'be received by everyone'});
+  console.log('connected');
+
+  socket.on('chat message', function (from, msg) {
+    console.log('I received a private message by ', from, ' saying ', msg);
+  });
+
+  socket.on('disconnect', function () {
+    io.emit('user disconnected');
+  });
+});

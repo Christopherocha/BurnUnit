@@ -38,6 +38,7 @@
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 
 </head>
 <body>
@@ -65,7 +66,13 @@
 		</div>
 	</nav>-->
 	{{{ body }}}
-
+<script>
+  var socket = io.connect();
+  socket.on('chat message', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
 </body>
 
 </html>
